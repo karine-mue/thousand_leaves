@@ -17,10 +17,11 @@ jobs:
 
       - name: MkDocsをセットアップ
         run: |
-          pip install mkdocs-material
-          pip install mkdocs-minify-plugin
-          pip install mkdocs-git-revision-date-localized-plugin
-          mkdocs build
+         pip install mkdocs
+         pip install mkdocs-material
+         pip install mkdocs-minify-plugin
+         pip install mkdocs-git-revision-date-localized-plugin
+         mkdocs build
 
       - name: GitHub Pagesにデプロイ
         uses: peaceiris/actions-gh-pages@v3
