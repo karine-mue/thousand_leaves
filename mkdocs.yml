@@ -22,6 +22,9 @@ nav:
       - Overview: R/index.md
       - スクリプト: R/scripts.md
       - その他: R/others.md
+  - web:
+      - Overview: web/index.md
+      - その他: web/others.md
   - 統計:
       - Overview: Stats/index.md
       - その他: Stats/others.md
