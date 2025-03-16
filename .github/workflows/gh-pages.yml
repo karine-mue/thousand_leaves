@@ -1,0 +1,25 @@
+name: Deploy MkDocs
+
+on:
+  push:
+    branches:
+      - main  # 変更を main ブランチにプッシュすると自動デプロイ
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: GitHubリポジトリをチェックアウト
+        uses: actions/checkout@v3
+
+      - name: MkDocsをセットアップ
+        run: |
+          pip install mkdocs-material
+          mkdocs build
+
+      - name: GitHub Pagesにデプロイ
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./site
