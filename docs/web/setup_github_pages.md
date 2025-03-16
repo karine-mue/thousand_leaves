@@ -126,6 +126,7 @@ Docker を使って MkDocs の動作確認を行う。
     保存（Add secret）をクリック
 
 ### 6 GitHub Pagesの有効化
+1. githubのリポジトリの設定画面で以下を設定する
     Settings > Pages を開く
     Source を Deploy from a branch に設定
     Branch を gh-pages、フォルダは /(root) にする
