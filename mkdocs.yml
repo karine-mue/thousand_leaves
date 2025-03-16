@@ -24,7 +24,7 @@ nav:
       - その他: R/others.md
   - 統計:
       - Overview: Stats/index.md
-      - 経済指標: Stats/economic_indicators.md
+      - その他: Stats/others.md
   - VRChat:
       - Overview: vrchat/index.md
       - モデル調整: vrchat/model.md
