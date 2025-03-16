@@ -1421,13 +1421,15 @@ github側でPAT(Personal Access Token)の設定が必要</p>
 </li>
 </ol>
 <h3 id="6-github-pages">6 GitHub Pagesの有効化</h3>
-<pre><code>Settings &gt; Pages を開く
-Source を Deploy from a branch に設定
-Branch を gh-pages、フォルダは /(root) にする
-「Save」ボタンをクリック
-数分待って https://{ユーザ名}.github.io/{サイト名}/ にアクセスし表示されていることを確認する
-※一度表示しているとキャッシュが残っていることがある、表示されない場合はキャッシュクリア (Ctrl + Shift + R)
-</code></pre>
+<ol>
+<li>githubのリポジトリの設定画面で以下を設定する
+    Settings &gt; Pages を開く
+    Source を Deploy from a branch に設定
+    Branch を gh-pages、フォルダは /(root) にする
+    「Save」ボタンをクリック
+    数分待って https://{ユーザ名}.github.io/{サイト名}/ にアクセスし表示されていることを確認する
+    ※一度表示しているとキャッシュが残っていることがある、表示されない場合はキャッシュクリア (Ctrl + Shift + R)</li>
+</ol>
 <h4 id="7">7 自動デプロイのテスト</h4>
 <p>mdファイルを更新、mainにcommitし反映されていることをweb側から確認する</p>
 
