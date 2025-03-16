@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: GitHubリポジトリをチェックアウト
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # ブランチの全履歴を取得するために 0 に設定
 
       - name: MkDocsをセットアップ
         run: |

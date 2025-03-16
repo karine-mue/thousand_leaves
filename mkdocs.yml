@@ -3,6 +3,11 @@ site_url: "https://karine-mue.github.io/thousand_leaves/"
 repo_url: "https://github.com/karine-mue/thousand_leaves.git"
 theme:
   name: "material"
+  
+plugins:
+  - search
+  - git-revision-date-localized
+  - mkdocs-minify-plugin
 
 nav:
   - Home: index.md
