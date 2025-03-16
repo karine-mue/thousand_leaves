@@ -5,27 +5,28 @@ theme:
 nav:
   - Home: index.md
   - Linux:
-      - Overview: docs/linux/index.md
-      - コマンドメモ: docs/linux/cmd.md
-      - Shell: docs/linux/shell.md
-      - その他: docs/linux/others.md
+      - Overview: linux/index.md
+      - コマンドメモ: linux/cmd.md
+      - Shell: linux/shell.md
+      - その他: linux/others.md
   - PC構成:
-      - Overview: docs/pc-build/index.md
-      - ハードウェア: docs/pc-build/hardware.md
-      - ソフトウェア: docs/pc-build/software.md
-      - その他: docs/pc-build/others.md
+      - Overview: pc-build/index.md
+      - ハードウェア: pc-build/hardware.md
+      - ソフトウェア: pc-build/software.md
+      - その他: pc-build/others.md
   - Python:
-      - Overview: docs/python/index.md
-      - スクリプト: docs/python/scripts.md
-      - その他: docs/python/others.md
+      - Overview: python/index.md
+      - スクリプト集: python/scripts.md
+      - その他: python/others.md
   - R:
-      - Overview: docs/R/index.md
-      - スクリプト: docs/R/scripts.md
-      - その他: docs/R/others.md
+      - Overview: R/index.md
+      - スクリプト: R/scripts.md
+      - その他: R/others.md
   - 統計:
-      - Overview: docs/Stats/index.md
-      - 経済指標: docs/Stats/economic_indicators.md
+      - Overview: Stats/index.md
+      - 経済指標: Stats/economic_indicators.md
   - VRChat:
-      - Overview: docs/vrchat/index.md
-      - モデル調整: docs/vrchat/model.md
-      - その他: docs/vrchat/others.md
+      - Overview: vrchat/index.md
+      - モデル調整: vrchat/model.md
+      - その他: vrchat/others.md
+
