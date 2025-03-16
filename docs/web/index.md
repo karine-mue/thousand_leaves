@@ -5,6 +5,6 @@ web関連のためしたことなど
 
 | 作成日 | 更新日 | タイトル | URL |
 |--------|--------|---------|-----|
-| 2025-03-16 | 2025-03-16 | [GitHub Pages + MkDocs セットアップ] | [github_pages_mkdocs.md](github_pages_mkdocs.md) |
+| 2025-03-16 | 2025-03-16 | [GitHub Pages + MkDocs セットアップ] | [setup_github_pages.md](setup_github_pages.md) |
 
 ---

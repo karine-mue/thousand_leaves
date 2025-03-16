@@ -26,7 +26,7 @@ nav:
       - その他: R/others.md
   - web:
       - Overview: web/index.md
-      - GitHub Pages + MkDocs セットアップ手順: web/github_pages_mkdocs.md
+      - GitHub Pages + MkDocs セットアップ手順: web/setup_github_pages.md
       - その他: web/others.md
   - 統計:
       - Overview: Stats/index.md
