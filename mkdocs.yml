@@ -1,4 +1,6 @@
 site_name: "Thousand Leaves Notes"
+site_url: "https://karine-mue.github.io/thousand_leaves/"
+repo_url: "https://github.com/karine-mue/thousand_leaves.git"
 theme:
   name: "material"
 
@@ -32,4 +34,8 @@ nav:
       - Overview: vrchat/index.md
       - モデル調整: vrchat/model.md
       - その他: vrchat/others.md
+
+site_name: "Thousand Leaves Notes"
+
+
 
