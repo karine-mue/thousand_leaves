@@ -10,6 +10,7 @@ vroidで作成した3Dモデルをvrchatへ入れた時に視線が動きすぎ�
 - Unity Editor: 2022.3.22.f1
 
 注意点は以下2点
+
 - VCCにVRC Avatar Descriptorをインストールすること
 - VCC対応のUnity Editorは常に少々古い、対応のUnityを入れること
 
