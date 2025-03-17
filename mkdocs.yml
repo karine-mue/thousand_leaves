@@ -40,7 +40,7 @@ nav:
       - その他: Stats/others.md
   - VRChat:
       - Overview: vrchat/index.md
-      - 視線きょろきょろ対策: vrchat/eye_tracking.md
+      - 視線対策: vrchat/eye_tracking.md
       - モデル調整: vrchat/model.md
       - その他: vrchat/others.md
 
