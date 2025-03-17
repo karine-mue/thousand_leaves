@@ -36,7 +36,7 @@ VRC Avatar Descriptorが無い場合はVCCのmanage projectで入れられてな
 Viewを開いてView Positionの値を調整する
 
 #### 参考値
-身長160cmのモデルの参考値、X=0は固定でYとZを調整する
+身長143cmのモデルの参考値、X=0は固定でYとZを調整する
 
 - X(左右): 0
 - Y(高さ): 1.43
