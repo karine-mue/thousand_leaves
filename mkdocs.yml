@@ -18,6 +18,7 @@ nav:
       - コマンドメモ: linux/cmd.md
       - Shell: linux/shell.md
       - その他: linux/others.md
+      - ミニPCを自宅内ファイルサーバにする: linux/samba.md
   - PC構成:
       - Overview: pc-build/index.md
       - ハードウェア: pc-build/hardware.md
