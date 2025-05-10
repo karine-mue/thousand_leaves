@@ -42,6 +42,10 @@ nav:
       - その他: web/others.md
   - 統計:
       - Overview: Stats/index.md
+      - 指標一覧: Stats/metrics.md
+      - 分析準備ガイド 兼 チェックリスト: Stats/precheck.md
+      - ユースケース別の指標使い分け: Stats/usecase_metrics.md
+      - 構造比較アイデア: Stats/comparison-ideas.md
       - その他: Stats/others.md
   - VRChat:
       - Overview: vrchat/index.md
