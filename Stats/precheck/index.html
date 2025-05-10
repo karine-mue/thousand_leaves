@@ -1149,6 +1149,111 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="チェック内容">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. ファイル読込とパース確認
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-na" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 欠損値（NA）の確認
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. ユニーク値と集中度の確認
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. データ型の確認と明示的な修正
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. 一部指標に適さない列の見極め
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. 順序性や構造の確認（手動チェック推奨）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. 数値データの分布形状確認
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. 外れ値の検出と対応方針
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-id" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. ID／主キーの一意性確認
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. ドメイン知識の反映
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      11. 略語・指標早見表
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -1260,8 +1365,8 @@
 </tbody>
 </table>
 <h2 id="_4">チェック内容</h2>
-<ol>
-<li>ファイル読込とパース確認</li>
+<h3 id="1">1. ファイル読込とパース確認</h3>
+<ul>
 <li>
 <p>目的：
 対象ファイルが存在し、指定された形式（エンコーディング・区切り記号など）で正しく読み込めていることを確認する
@@ -1272,7 +1377,7 @@
 エラー発生時に根本原因が分かりづらく、指標や集計結果が壊れる可能性がある
 列のズレは欠損や誤ラベルの原因となり、後工程に波及する</p>
 </li>
-</ol>
+</ul>
 <table>
 <thead>
 <tr>
@@ -1311,8 +1416,8 @@ print(df.shape)  # 行数・列数確認
 print(df.columns)  # 列名確認
 
 </code></pre>
-<ol>
-<li>欠損値（NA）の確認</li>
+<h3 id="2-na">2. 欠損値（NA）の確認</h3>
+<ul>
 <li>
 <p>目的：
 各列に欠損がどの程度含まれているかを把握し、除外や補完などの判断材料とする。</p>
@@ -1328,16 +1433,16 @@ NAの偏りが指標結果を歪める可能性もある</p>
 検証環境に依存するため導入されているかどうか、導入が可能かどうかは別途確認すること
 <code>missingno.matrix(df)</code></p>
 </li>
-</ol>
+</ul>
 <pre><code class="language-python">na_ratio = df.isna().mean().round(3)
 print(na_ratio.sort_values(ascending=False))  # 欠損率が高い順に表示
 
 </code></pre>
-<ol>
-<li>ユニーク値と集中度の確認</li>
+<h3 id="3">3. ユニーク値と集中度の確認</h3>
+<ul>
 <li>目的：
 各列のユニーク値数とその割合を確認し、識別性や情報量の偏りの有無を判断する</li>
-</ol>
+</ul>
 <p>見落とした場合のリスク：
 完全ユニーク列（識別子）や一極集中型の列（偏りが強いカテゴリ）はスコア評価のバイアス要因となり、再識別リスクや過学習を引き起こす可能性がある。
 例えば値の一極集中（例：90%が同じ値）は分布指標 δ 等に影響する
@@ -1346,8 +1451,8 @@ print(na_ratio.sort_values(ascending=False))  # 欠損率が高い順に表示
 uniq_rate = (df.nunique()/len(df)).round(3)   # 割合
 top_freq  = df[col].value_counts(normalize=True).head()
 </code></pre>
-<ol>
-<li>データ型の確認と明示的な修正</li>
+<h3 id="4">4. データ型の確認と明示的な修正</h3>
+<ul>
 <li>
 <p>目的：
 各列に適切な型（数値・カテゴリ・日付など）が割り当てられているかを確認し、必要に応じて型変換を行う。</p>
@@ -1356,14 +1461,14 @@ top_freq  = df[col].value_counts(normalize=True).head()
 <p>見落とした場合のリスク：
 データ型が誤っていると、相関・分布距離などの指標が正しく計算されない。特にobject型の誤解釈が多く、処理が不安定になる。</p>
 </li>
-</ol>
+</ul>
 <pre><code class="language-python">df.dtypes
 df['price'] = pd.to_numeric(df['price'], errors='coerce')
 df['id']    = df['id'].astype('category')
 df['date']  = pd.to_datetime(df['date'], format='%Y-%m-%d')
 </code></pre>
-<ol>
-<li>一部指標に適さない列の見極め</li>
+<h3 id="5">5. 一部指標に適さない列の見極め</h3>
+<ul>
 <li>
 <p>目的：
 評価に適さない列（例：すべてNA、すべて同じ値、完全ユニークなど）を事前に識別し、分析対象から除外または慎重に扱う</p>
@@ -1379,7 +1484,7 @@ df['date']  = pd.to_datetime(df['date'], format='%Y-%m-%d')
 ただし、比較する場合に別の意味で役立つ場合（例：リファレンス順としてMRDに使うなど）もあるため、一律に除外すると後工程でのトラブル原因になることがある
 実務ではチェックの際にフラグを付与して人間が判断できるようにするとトレーサビリティ確保に強い設計(なぜどのような理由で除外したかを後から追跡可能)となる</p>
 </li>
-</ol>
+</ul>
 <table>
 <thead>
 <tr>
@@ -1420,8 +1525,8 @@ df['date']  = pd.to_datetime(df['date'], format='%Y-%m-%d')
 df.isna().all()          # 全NA列の検出
 df.nunique() == 1        # 定数列の検出
 </code></pre>
-<ol>
-<li>順序性や構造の確認（手動チェック推奨）</li>
+<h3 id="6">6.  順序性や構造の確認（手動チェック推奨）</h3>
+<ul>
 <li>
 <p>目的：
 列の並びや構造に意味があるか（例：登録順、スコア順など）を人間の視点で評価する
@@ -1432,7 +1537,7 @@ df.nunique() == 1        # 定数列の検出
 本来は順序性を持つ列にMRDやPEを適用しないなどの誤判断が生じ、スコアの妥当性を損ねる恐れがある</p>
 </li>
 <li>
-<p>補記：
+<p>補記： 
 これを機械に任せると適切に判定できないことが往々にしてあるため、この工程は人間が行うことが望ましい
 どの指標を適用するか、どの指標でどの範囲をカバーするか（組み合わせの問題）を判断するためにも必要
 設定ファイルやメタデータで列属性を明示することを推奨する</p>
@@ -1440,12 +1545,10 @@ df.nunique() == 1        # 定数列の検出
 <li>
 <p>順序性: 登録日・スコア・ランクなど</p>
 </li>
-<li>
-<p>構造例: 階層型カテゴリ（大分類-中分類-小分類）、時系列の周期性</p>
-</li>
-<li>
-<p>数値データの分布形状確認</p>
-</li>
+<li>構造例: 階層型カテゴリ（大分類-中分類-小分類）、時系列の周期性</li>
+</ul>
+<h3 id="7">7. 数値データの分布形状確認</h3>
+<ul>
 <li>
 <p>目的：
 各数値列の値がどのような分布をしているか（例：正規分布、右に偏った分布など）を確認することで、後続の統計的処理やスコア計算の前提を確かめる
@@ -1455,15 +1558,13 @@ df.nunique() == 1        # 定数列の検出
 <p>見落とした場合のリスク：
 分布の偏りや尖度が極端な列に指標を適用すると、誤って異常値と判定されたりユーティリティの誤解釈に繋がることがある</p>
 </li>
-</ol>
+</ul>
 <pre><code class="language-python">df[col].hist()  # ヒストグラムで分布形状を確認
 df.boxplot(column=col)  # 外れ値も含めた分布の概要を視覚化
 df[col].plot(kind='density')  # 滑らかな密度曲線を見る
 </code></pre>
-<ol>
-<li>
-<p>外れ値の検出と対応方針</p>
-</li>
+<h3 id="8">8. 外れ値の検出と対応方針</h3>
+<ul>
 <li>
 <p>目的：
 統計的に極端な値（外れ値）が存在するかどうかを確認し、分析の精度や信頼性を損なう要因を排除または補正する
@@ -1474,13 +1575,13 @@ df[col].plot(kind='density')  # 滑らかな密度曲線を見る
 外れ値が原因で平均や分散などの統計量が歪み、スコア計算やモデリングの結果に大きな影響を与える
 異常値を真の傾向と誤認し、不適切な判断を導く恐れがある</p>
 </li>
-</ol>
+</ul>
 <pre><code class="language-python">from scipy.stats import zscore
 df[&quot;z&quot;] = zscore(df[col])
 outliers = df[df[&quot;z&quot;].abs() &gt; 3]  # Zスコアによる外れ値判定
 </code></pre>
-<ol>
-<li>ID／主キーの一意性確認</li>
+<h3 id="9-id">9. ID／主キーの一意性確認</h3>
+<ul>
 <li>
 <p>目的：
 ユニークIDや主キーとして期待される列に重複が存在しないことを確認する
@@ -1491,12 +1592,12 @@ outliers = df[df[&quot;z&quot;].abs() &gt; 3]  # Zスコアによる外れ値判
 ID重複の存在により、意図しない多重マッチや集計ミスが発生する
 特に再識別リスクの評価やスコア統合処理などで誤集計の原因となる</p>
 </li>
-</ol>
+</ul>
 <pre><code class="language-python">assert df[&quot;id&quot;].is_unique, &quot;IDに重複があります&quot;
 df[&quot;id&quot;].duplicated().sum()  # 重複件数を確認
 </code></pre>
-<ol>
-<li>ドメイン知識の反映</li>
+<h3 id="10">10. ドメイン知識の反映</h3>
+<ul>
 <li>
 <p>目的：
 欠損値や分布、値の意味に対する機械的な解釈に加えて、実データの背景や業務的文脈に基づく判断を加える
@@ -1507,13 +1608,11 @@ df[&quot;id&quot;].duplicated().sum()  # 重複件数を確認
 「NA」は欠損値ではなく「該当なし」を意味する場合があるように、値の意味を誤って解釈することで分析の前提が崩れ、誤結論に至る恐れがある
 チェックリストの項目単独では判定できないため、最終的な判断は現場・業務知識を持つ担当者とのすり合わせが必須</p>
 </li>
-<li>
-<p>略語・指標早見表
-本チェックリストでは、各工程において複数の略語や指標名が登場する
+</ul>
+<h3 id="11">11. 略語・指標早見表</h3>
+<p>本チェックリストでは、各工程において複数の略語や指標名が登場する
 以下は主要な略記とその意味、および典型的な用途の一覧である
 必要に応じて各列ごとのスコア計算やリスク評価時の参考とすること</p>
-</li>
-</ol>
 <table>
 <thead>
 <tr>
@@ -1575,7 +1674,7 @@ df[&quot;id&quot;].duplicated().sum()  # 重複件数を確認
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年5月10日 13:38:25">2025年5月10日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年5月10日 13:54:14">2025年5月10日</span>
   </span>
 
     
