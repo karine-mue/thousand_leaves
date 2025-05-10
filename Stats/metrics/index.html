@@ -18,7 +18,7 @@
     
     
       
-        <title>統計指標一覧 - Thousand Leaves Notes</title>
+        <title>分析でよく使う指標 - Thousand Leaves Notes</title>
       
     
     
@@ -96,7 +96,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              統計指標一覧
+              分析でよく使う指標
             
           </span>
         </div>
@@ -1118,6 +1118,119 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      一覧
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      詳細
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="詳細">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-zz-score" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Zスコア（Z-score）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-klkullbackleibler-divergence" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. KLダイバージェンス（Kullback–Leibler divergence）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-jsjensenshannon-divergence" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. JSダイバージェンス（Jensen–Shannon divergence）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-mrdmean-rank-displacement" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. MRD（Mean Rank Displacement）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-pepermutation-entropy" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. PE（Permutation Entropy）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-lsrlinkage-success-rate" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. LSR（Linkage Success Rate）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-spearmans" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. 順位相関（Spearman’s ρ）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-spearmans_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. 順位相関（Spearman’s ρ）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-cramers-vv" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Cramér's V（クレメールのV）
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1135,77 +1248,222 @@
   
 
 
-<h1 id="_1">統計指標一覧</h1>
-<p>比較、突合の際に使える統計指標の一覧</p>
+<h1 id="_1">分析でよく使う指標</h1>
+<h2 id="_2">一覧</h2>
 <table>
 <thead>
 <tr>
-<th>指標名 （略称）</th>
-<th>説明文</th>
-<th>主な関数名（Python / R）</th>
-<th>値の目安</th>
-<th>値が大きいと</th>
+<th>#</th>
+<th>指標名</th>
+<th>用途</th>
 <th>向いているデータ</th>
-<th>向いていないデータ</th>
+<th>目安の値</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>LSR（Linkage Success Rate）</td>
-<td>元のデータと1:1で一致してしまう行がどれだけあるか。再識別の危険度を示す。</td>
-<td><code>pandas.merge</code>, <code>duplicated</code><br><code>dplyr::inner_join</code></td>
-<td>0.0（必須）</td>
-<td>再識別の危険が高い</td>
-<td>氏名、メールアドレス、会員IDなど識別性の高い列</td>
-<td>同じ値が繰り返される列（都道府県など）</td>
+<td>1</td>
+<td>Zスコア</td>
+<td>外れ値検出</td>
+<td>正規分布に近い連続値</td>
+<td>|Z| ≥ 3</td>
 </tr>
 <tr>
-<td>δ（δ-Disclosure）</td>
-<td>グループ内に同じ値しか無いと属性がバレやすい。どれだけ多様性があるかを測る。</td>
-<td><code>groupby().nunique()</code><br><code>dplyr::n_distinct</code></td>
-<td>3以上</td>
-<td>多様性が高く安全</td>
-<td>職業、所属部署、購入カテゴリなど</td>
-<td>単一カテゴリまたは2値しかない列</td>
+<td>2</td>
+<td>KLダイバージェンス</td>
+<td>分布比較・情報損失評価</td>
+<td>正規化された確率分布</td>
+<td>0 に近いほど類似</td>
 </tr>
 <tr>
-<td>ρₘₐₓ（Spearman順位相関）</td>
-<td>並び順とIDなどの順位の似かたを測る。強く似ていると構造が壊れていない。</td>
-<td><code>scipy.stats.spearmanr</code><br><code>cor(..., method="spearman")</code></td>
-<td>0.05以下</td>
-<td>順序構造が強く残っていて匿名化が不十分</td>
-<td>登録順、処理日などの連番列</td>
-<td>並びに意味がないランダムな列</td>
+<td>3</td>
+<td>JSダイバージェンス</td>
+<td>分布比較・ユーティリティ確認</td>
+<td>離散カテゴリ（正規化後）</td>
+<td>≤ 0.05（目安）</td>
 </tr>
 <tr>
-<td>MRD（Mean Rank Displacement）</td>
-<td>元の並びと比べてどれだけ順位が崩れたかの平均。破壊度の強さを測る。</td>
-<td>自作（<code>rank1 - rank2</code> の平均距離）</td>
-<td>0.45以上</td>
-<td>順位が十分に崩れていて安全、完全に崩れると0.5に収束する</td>
-<td>金額、スコア、年齢などの数値列</td>
-<td>順序に意味がない列</td>
+<td>4</td>
+<td>MRD</td>
+<td>並び順の破壊度</td>
+<td>順位性を持つ連続データ</td>
+<td>≥ 0.45</td>
 </tr>
 <tr>
-<td>PE（Permutation Entropy）</td>
-<td>値の並びの“ぐちゃぐちゃさ”。高いとランダムで、規則性がない。</td>
-<td><code>antropy.permutation_entropy</code><br><code>RTransferEntropy::perm_entropy</code></td>
-<td>0.95以上</td>
-<td>規則性がなく、匿名性が高い</td>
-<td>時間経過に沿った数値、連番など</td>
-<td>カテゴリ値の並び、順序を気にしない列</td>
+<td>5</td>
+<td>PE</td>
+<td>値の並びの乱雑度</td>
+<td>単調性のある時系列やスコア列</td>
+<td>≥ 0.95</td>
 </tr>
 <tr>
-<td>JS（Jensen-Shannon距離）</td>
-<td>元データの分布とどれくらい違うか。統計的傾向の変化を測る。</td>
-<td><code>scipy.spatial.distance.jensenshannon</code><br><code>philentropy::JSD</code></td>
-<td>0.05以下</td>
-<td>元の統計傾向から大きく外れてしまっている</td>
-<td>頻度を維持したい項目（購入数、商品カテゴリなど）</td>
-<td>意図的に分布を壊したい列（ランダマイズ目的）</td>
+<td>6</td>
+<td>LSR</td>
+<td>再識別リスク（1:1対応）</td>
+<td>カテゴリの組合せ</td>
+<td>= 0</td>
+</tr>
+<tr>
+<td>7</td>
+<td>ρ（順位相関）</td>
+<td>IDとの相関チェック</td>
+<td>ID + カテゴリ列</td>
+<td>≤ 0.05</td>
+</tr>
+<tr>
+<td>8</td>
+<td>δ（デルタ）</td>
+<td>属性多様性の確認</td>
+<td>少数カテゴリを含む列</td>
+<td>δ ≥ 3</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Cramér's V（V）</td>
+<td>カテゴリ間の結合強度の判定</td>
+<td>カテゴリ変数どうし</td>
+<td>≥ 0.10（除外検討）</td>
 </tr>
 </tbody>
 </table>
+<h2 id="_3">詳細</h2>
+<h3 id="1-zz-score">1. Zスコア（Z-score）</h3>
+<ul>
+<li>説明：各値が平均からどれだけ離れているかを、標準偏差単位で表した指標です。</li>
+<li>ユースケース：外れ値検出に用いられる。|Z| ≧ 3 で異常と判定することが多い。</li>
+<li>向いているデータ：正規分布に近い連続値（例：身長、売上など）</li>
+<li>向いていないデータ：離散値、小サンプル、極端な外れ値が既に存在するもの</li>
+<li>Python関数例：scipy.stats.zscore()、または (x - mean) / std</li>
+<li>目安：|Z| ≥ 3 ⇒ 異常点と見なす（※業務によって調整）</li>
+</ul>
+<h3 id="2-klkullbackleibler-divergence">2. KLダイバージェンス（Kullback–Leibler divergence）</h3>
+<ul>
+<li>説明：ある確率分布Pが別の分布Qからどれだけ離れているかを測る非対称な指標。</li>
+<li>ユースケース：元データと加工後データの分布差、情報損失の検出</li>
+<li>向いているデータ：正規化された連続またはカテゴリ分布</li>
+<li>向いていないデータ：<strong>ゼロを含む分布</strong>、非正規化の頻度データ（log(0)で計算不能）</li>
+<li>Python関数例：scipy.stats.entropy(p, q)</li>
+<li>目安：0 に近い ⇒ 類似（完全一致で 0）</li>
+</ul>
+<h3 id="3-jsjensenshannon-divergence">3. JSダイバージェンス（Jensen–Shannon divergence）</h3>
+<ul>
+<li>説明：2つの分布の類似度を対称的かつ有限な値で測る指標。</li>
+<li>ユースケース：元データと加工後データの分布差の評価、ユーティリティ保持確認。</li>
+<li>向いているデータ：カテゴリ分布（ヒストグラム正規化済み）。</li>
+<li>向いていないデータ：欠損の多い列、ゼロを含む非正規化分布。</li>
+<li>Python関数例：scipy.spatial.distance.jensenshannon(p, q)</li>
+<li>目安：≤ 0.05 を目安に差異なしと見なす。</li>
+</ul>
+<h3 id="4-mrdmean-rank-displacement">4. MRD（Mean Rank Displacement）</h3>
+<ul>
+<li>説明：順位のずれ（破壊度）を平均的に表す指標。0〜0.5の範囲。</li>
+<li>ユースケース：並び順の保護、単調性の破壊確認。</li>
+<li>向いているデータ：順序に意味を持つ連続変数（例：点数、金額）。</li>
+<li>向いていないデータ：値が全て同じ列、または完全ユニークな列。</li>
+<li>Python関数例：scipy.stats.rankdata() → 差分平均</li>
+<li>目安：≥ 0.45 でランダム性が保たれていると見なす。</li>
+</ul>
+<h3 id="5-pepermutation-entropy">5. PE（Permutation Entropy）</h3>
+<ul>
+<li>説明：系列のランダム性（予測困難性）を評価する指標。0〜1の範囲。</li>
+<li>ユースケース：スコア列や時系列の単調性チェック、スワップの乱雑度測定。</li>
+<li>向いているデータ：単調性を持つ時系列、スコア列。</li>
+<li>向いていないデータ：順序性のないカテゴリ列。</li>
+<li>Python関数例：pyinform.permutationentropy()（または自作）</li>
+<li>目安：≥ 0.95 で高乱雑と判断。</li>
+</ul>
+<h3 id="6-lsrlinkage-success-rate">6. LSR（Linkage Success Rate）</h3>
+<ul>
+<li>説明：匿名化された列の中に元データとの1:1一致が存在する割合を示す再識別リスク指標。</li>
+<li>ユースケース：カテゴリの組み合わせによる一意識別のリスク検出。</li>
+<li>向いているデータ：複数のカテゴリ列（CAT_LOW）。</li>
+<li>向いていないデータ：連続値や完全ユニークな列。</li>
+<li>Python関数例：groupby() + filter(lambda x: len(x) == 1)</li>
+<li>目安：= 0（1:1照合行なし）で再識別不可と見なす。</li>
+</ul>
+<h3 id="7-spearmans">7. 順位相関（Spearman’s ρ）</h3>
+<ul>
+<li>説明：ID列と他列との順位相関を表す指標。-1〜1の範囲。</li>
+<li>ユースケース：IDとの構造的な結合傾向の評価。疑似識別子の検出。</li>
+<li>向いているデータ：ID列とカテゴリ列の組み合わせ。</li>
+<li>向いていないデータ：NAの多い列、定数列。</li>
+<li>Python関数例：scipy.stats.spearmanr(x, y)</li>
+<li>目安：≤ 0.05 → 結合リスクは低いと判断。</li>
+</ul>
+<h3 id="7-spearmans_1">7. 順位相関（Spearman’s ρ）</h3>
+<ul>
+<li>説明：ID列と他列との順位相関を表す指標。-1〜1の範囲。</li>
+<li>ユースケース：IDとの構造的な結合傾向の評価。疑似識別子の検出。</li>
+<li>向いているデータ：ID列とカテゴリ列の組み合わせ。</li>
+<li>向いていないデータ：NAの多い列、定数列。</li>
+<li>Python関数例：scipy.stats.spearmanr(x, y)</li>
+<li>目安：≤ 0.05 → 結合リスクは低いと判断。</li>
+</ul>
+<h3 id="9-cramers-vv">9. Cramér's V（クレメールのV）</h3>
+<ul>
+<li>
+<p>説明：
+2つのカテゴリ変数間の関連（結合）強度を 0～1 の範囲で表す指標。
+ピアソンのカイ二乗検定に基づく値で、順不同・非数値のカテゴリ列間の結合度を評価できる。</p>
+</li>
+<li>
+<p>ユースケース：
+疑似識別子の検出。IDとの結合強度が高い列を見つけ、SENSITIVE候補のスコア付けに使う。
+特に、「ID列 vs カテゴリ列」の相関に着目する場合に有用。</p>
+</li>
+<li>
+<p>向いているデータ：
+カテゴリ変数同士（例：性別 × 地域、年齢区分 × 行動パターン）</p>
+</li>
+<li>
+<p>向いていないデータ：
+数値データ同士（スケール情報が捨てられるため不適）</p>
+</li>
+<li>
+<p>Python関数例：</p>
+</li>
+</ul>
+<pre><code class="language-python">def cramers_v(x, y):
+    confusion_matrix = pd.crosstab(x, y)
+    chi2 = ((confusion_matrix - confusion_matrix.mean()) ** 2 / confusion_matrix.mean()).sum().sum()
+    n = confusion_matrix.sum().sum()
+    phi2 = chi2 / n
+    r, k = confusion_matrix.shape
+    return np.sqrt(phi2 / min(k - 1, r - 1)) if min(k - 1, r - 1) &gt; 0 else 0.0
+</code></pre>
+<ul>
+<li>目安:</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>V 値の範囲</th>
+<th>解釈</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.00–0.10</td>
+<td>無関係またはごく弱い関係</td>
+</tr>
+<tr>
+<td>0.10–0.30</td>
+<td>弱い関係（警戒ライン）</td>
+</tr>
+<tr>
+<td>0.30–0.50</td>
+<td>中程度の関係（再識別リスクあり）</td>
+</tr>
+<tr>
+<td>0.50–1.00</td>
+<td>強い関係（除外推奨）</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>備考：
+実務では「V ≥ 0.1」で警戒、「V ≥ 0.3」で疑似識別子扱いされるケースが多い。</li>
+</ul>
 
 
 
@@ -1226,7 +1484,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年5月10日 13:38:25">2025年5月10日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年5月10日 14:59:31">2025年5月10日</span>
   </span>
 
     
