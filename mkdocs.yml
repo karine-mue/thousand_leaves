@@ -3,10 +3,21 @@ site_url: "https://karine-mue.github.io/thousand_leaves/"
 repo_url: "https://github.com/karine-mue/thousand_leaves.git"
 theme:
   name: "material"
+  language: "ja"
+  features:
+    - navigation.instant
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - toc.integrate
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - navigation.top
+    - navigation.tracking
 extra_javascript:
   - https://www.googletagmanager.com/gtag/js?id=G-6140GMZ322
   - js/gtag_config.js
-
 
 plugins:
   - search
