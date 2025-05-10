@@ -26,6 +26,16 @@ plugins:
       locale: "ja_JP"
       timezone: "Asia/Tokyo"
 
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/karine-mue
+  generator: false
+  version:
+    provider: git
+    branch: main
+    commit: true
+
 nav:
   - Home: index.md
   - Linux:
