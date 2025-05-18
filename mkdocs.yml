@@ -72,6 +72,7 @@ nav:
   - LLM:
       - Overview: LLM/index.md
       - なぜ"嘘"がバレたchatgptは浮気がバレた浮気癖男になるのか: LLM/chatgpt_cheating.md
+      - 意味空間における前提破壊の数理モデル化と再現性の探究: LLM/two_layer_SDE_model.md
   - VRChat:
       - Overview: vrchat/index.md
       - 視線対策: vrchat/eye_tracking.md
