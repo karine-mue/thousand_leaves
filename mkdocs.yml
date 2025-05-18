@@ -19,6 +19,7 @@ theme:
 extra_javascript:
   - https://www.googletagmanager.com/gtag/js?id=G-6140GMZ322
   - js/gtag_config.js
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
 plugins:
   - search
@@ -36,12 +37,6 @@ extra:
     provider: git
     branch: main
     commit: true
-
-markdown_extensions:
-  - markdown_katex:
-      no_inline_svg: False
-      insert_fonts_css: True
-      macro-file: macros.tex
 
 nav:
   - Home: index.md
@@ -85,3 +80,7 @@ nav:
       - モデル調整: vrchat/model.md
       - その他: vrchat/others.md
 
+markdown_extensions:
+  - pymdownx.arithmatex:
+      inline_syntax: ['$', '$']
+      generic: true
