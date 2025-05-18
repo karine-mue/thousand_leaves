@@ -18,6 +18,7 @@
 | [R](R/index.md) | R言語でのデータ処理、スクリプト |
 | [Web](web/index.md) | GitHub Pages、MkDocs、その他Web関連 |
 | [統計](Stats/index.md) | 統計関連のメモ |
+| [LLM](LLM/index.md) | 大規模言語モデル関連のメモ |
 | [VRChat](vrchat/index.md) | vrchat関連いろいろ |
 
 ---
