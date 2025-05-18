@@ -38,7 +38,7 @@ extra:
     commit: true
 
 markdown_extensions:
-  - markdown_katex:
+  - markdown_katex
 
 nav:
   - Home: index.md
