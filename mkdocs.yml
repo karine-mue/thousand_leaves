@@ -37,6 +37,12 @@ extra:
     branch: main
     commit: true
 
+markdown_extensions:
+  - markdown_katex:
+      no_inline_svg: False
+      insert_fonts_css: True
+      macro-file: macros.tex
+
 nav:
   - Home: index.md
   - Linux:
@@ -78,11 +84,4 @@ nav:
       - 視線対策: vrchat/eye_tracking.md
       - モデル調整: vrchat/model.md
       - その他: vrchat/others.md
-
-site_name: "Thousand Leaves Notes"
-
-markdown_extensions:
-  - markdown_katex
-
-
 
