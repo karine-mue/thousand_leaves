@@ -39,7 +39,6 @@ extra:
 
 markdown_extensions:
   - markdown_katex:
-      enable_dollar_delimiter: true
 
 nav:
   - Home: index.md
