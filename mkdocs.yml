@@ -37,9 +37,6 @@ extra:
     branch: main
     commit: true
 
-markdown_extensions:
-  - markdown_katex
-
 nav:
   - Home: index.md
   - Linux:
@@ -83,6 +80,9 @@ nav:
       - その他: vrchat/others.md
 
 site_name: "Thousand Leaves Notes"
+
+markdown_extensions:
+  - markdown_katex
 
 
 
