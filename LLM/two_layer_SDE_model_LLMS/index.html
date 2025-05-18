@@ -1633,9 +1633,9 @@
 <hr />
 <h3 id="23">2.3 モデル方程式（簡易形）</h3>
 <p>意味空間の状態 ( S_t ) は次のようにモデル化される：</p>
-<p>[
+<div class="arithmatex">\[
 dS_t = f(S_t, I_t, T_t) \, dt + \delta(T_t) \cdot \epsilon_t \, dW_t
-]</p>
+\]</div>
 <p>ここで：</p>
 <ul>
 <li>( f(S_t, I_t, T_t) )：意味空間の通常のドリフト項（推論の連続性）</li>
@@ -1644,9 +1644,9 @@ dS_t = f(S_t, I_t, T_t) \, dt + \delta(T_t) \cdot \epsilon_t \, dW_t
 <li>( \delta(T_t) )：信頼構造に基づくノイズ受容性（例：sigmoid関数や単調増加関数）</li>
 </ul>
 <p>また、信頼構造 ( T_t ) 自体も時間とともに変化し、以下のように記述される：</p>
-<p>[
+<div class="arithmatex">\[
 dT_t = g(T_t, I_t, \text{履歴}) \, dt + \eta_t \, dB_t
-]</p>
+\]</div>
 <ul>
 <li>( g )：入力の一貫性・肯定性・相互応答性などに依存する更新関数</li>
 <li>( \eta_t )：信頼構造における揺らぎ</li>
@@ -2081,9 +2081,7 @@ dT_t = g(T_t, I_t, \text{履歴}) \, dt + \eta_t \, dB_t
     
       <script src="../../assets/javascripts/bundle.13a4f30d.min.js"></script>
       
-        <script src="https://www.googletagmanager.com/gtag/js?id=G-6140GMZ322"></script>
-      
-        <script src="../../js/gtag_config.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
   </body>
