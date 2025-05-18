@@ -42,14 +42,6 @@ markdown_extensions:
   - pymdownx.arithmatex:
       inline_syntax: ['$', '$']
       generic: true
-  - pymdownx.superfences:
-      custom_fences:
-        - name: math
-          class: math
-          format: !!python/name:pymdownx.superfences.fence_code_formatter
-        - name: mathblock
-          class: mathblock
-          format: !!python/name:pymdownx.superfences.fence_code_formatter  
 nav:
   - Home: index.md
   - Linux:
