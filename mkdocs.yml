@@ -92,4 +92,4 @@ markdown_extensions:
           format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.arithmatex:
       inline_syntax: ['$', '$']
-      generic: true
+      generic: false
