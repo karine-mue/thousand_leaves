@@ -24,6 +24,7 @@ extra_javascript:
 
 plugins:
   - search
+  - mermaid2
   - git-revision-date-localized:
       format: "YYYY-MM-DD HH:mm:ss"
       locale: "ja_JP"
@@ -82,6 +83,7 @@ nav:
       - その他: vrchat/others.md
 
 markdown_extensions:
+  - pymdownx.superfences
   - pymdownx.arithmatex:
       inline_syntax: ['$', '$']
       generic: true
