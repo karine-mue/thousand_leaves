@@ -83,9 +83,7 @@
 
 意味空間の状態 $S_t$ は次のようにモデル化される：
 
-$$
-dS_t = f(S_t, I_t, T_t) \, dt + \delta(T_t) \cdot \epsilon_t \, dW_t
-$$
+$ dS_t = f(S_t, I_t, T_t) \, dt + \delta(T_t) \cdot \epsilon_t \, dW_t $
 
 ここで：
 
@@ -96,9 +94,7 @@ $$
 
 また、信頼構造 $ T_t $ 自体も時間とともに変化し、以下のように記述される：
 
-$$
-dT_t = g(T_t, I_t, \text{履歴}) \, dt + \eta_t \, dB_t
-$$
+$ dT_t = g(T_t, I_t, \text{履歴}) \, dt + \eta_t \, dB_t $
 
 - $ g $：入力の一貫性・肯定性・相互応答性などに依存する更新関数
 - $ \eta_t $：信頼構造における揺らぎ
