@@ -5,12 +5,12 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<link href="https://karine-mue.github.io/thousand_leaves/R/scripts/" rel="canonical"/>
+<link href="https://karine-mue.github.io/thousand_leaves/web/mathjax/" rel="canonical"/>
 <link href="../" rel="prev"/>
-<link href="../others/" rel="next"/>
+<link href="../setup_github_pages/" rel="next"/>
 <link href="../../images/favicon.ico" rel="icon"/>
 <meta content="mkdocs-1.6.1, mkdocs-material-9.6.14" name="generator"/>
-<title>スクリプト - Thousand Leaves Notes</title>
+<title>MkDocsでTeX数式を表示する方法（MathJax） - Thousand Leaves Notes</title>
 <link href="../../assets/stylesheets/main.342714a4.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
@@ -22,6 +22,9 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
+<a class="md-skip" href="#mkdocstexmathjax">
+          コンテンツにスキップ
+        </a>
 </div>
 <div data-md-component="announce">
 </div>
@@ -45,7 +48,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              スクリプト
+              MkDocsでTeX数式を表示する方法（MathJax）
             
           </span>
 </div>
@@ -137,8 +140,8 @@
 
         </a>
 </li>
-<li class="md-tabs__item md-tabs__item--active">
-<a class="md-tabs__link" href="../">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../R/">
           
   
   
@@ -146,8 +149,8 @@
 
         </a>
 </li>
-<li class="md-tabs__item">
-<a class="md-tabs__link" href="../../web/">
+<li class="md-tabs__item md-tabs__item--active">
+<a class="md-tabs__link" href="../">
           
   
   
@@ -366,19 +369,61 @@
 </ul>
 </nav>
 </li>
-<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle" id="__nav_5" type="checkbox"/>
-<label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
 <span class="md-ellipsis">
     R
     
   </span>
 <span class="md-nav__icon md-icon"></span>
 </label>
-<nav aria-expanded="true" aria-labelledby="__nav_5_label" class="md-nav" data-md-level="1">
+<nav aria-expanded="false" aria-labelledby="__nav_5_label" class="md-nav" data-md-level="1">
 <label class="md-nav__title" for="__nav_5">
 <span class="md-nav__icon md-icon"></span>
             R
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../R/">
+<span class="md-ellipsis">
+    Overview
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../R/scripts/">
+<span class="md-ellipsis">
+    スクリプト
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../R/others/">
+<span class="md-ellipsis">
+    その他
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+<span class="md-ellipsis">
+    web
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_6_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_6">
+<span class="md-nav__icon md-icon"></span>
+            web
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
@@ -391,57 +436,118 @@
 </li>
 <li class="md-nav__item md-nav__item--active">
 <input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
-<a class="md-nav__link md-nav__link--active" href="./">
+<label class="md-nav__link md-nav__link--active" for="__toc">
 <span class="md-ellipsis">
-    スクリプト
-    
-  </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../others/">
-<span class="md-ellipsis">
-    その他
-    
-  </span>
-</a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_6" type="checkbox"/>
-<label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
-<span class="md-ellipsis">
-    web
+    MkDocsでTeX数式を表示する方法（MathJax）
     
   </span>
 <span class="md-nav__icon md-icon"></span>
 </label>
-<nav aria-expanded="false" aria-labelledby="__nav_6_label" class="md-nav" data-md-level="1">
-<label class="md-nav__title" for="__nav_6">
-<span class="md-nav__icon md-icon"></span>
-            web
-          </label>
-<ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../web/">
-<span class="md-ellipsis">
-    Overview
-    
-  </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../web/mathjax/">
+<a class="md-nav__link md-nav__link--active" href="./">
 <span class="md-ellipsis">
     MkDocsでTeX数式を表示する方法（MathJax）
     
   </span>
 </a>
+<nav aria-label="目次" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_1">
+<span class="md-ellipsis">
+      対象
+    </span>
+</a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../web/setup_github_pages/">
+<a class="md-nav__link" href="#_2">
+<span class="md-ellipsis">
+      使用ライブラリと基本方針
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_3">
+<span class="md-ellipsis">
+      手順概要
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-mkdocsyml">
+<span class="md-ellipsis">
+      1. mkdocs.yml に追記
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-markdown">
+<span class="md-ellipsis">
+      2. Markdown拡張機能の有効化
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-mathjax">
+<span class="md-ellipsis">
+      3. MathJax設定ファイルを作成（任意）
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4">
+<span class="md-ellipsis">
+      4. 数式の書き方例
+    </span>
+</a>
+<nav aria-label="4. 数式の書き方例" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_4">
+<span class="md-ellipsis">
+      インライン数式
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_5">
+<span class="md-ellipsis">
+      ブロック数式
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_6">
+<span class="md-ellipsis">
+      トラブルシューティング
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#jupyter">
+<span class="md-ellipsis">
+      補足：Jupyter記法と混同しない
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_7">
+<span class="md-ellipsis">
+      まとめ
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../setup_github_pages/">
 <span class="md-ellipsis">
     GitHub Pages + MkDocs セットアップ手順
     
@@ -616,13 +722,116 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1>スクリプト</h1>
+<h1 id="mkdocstexmathjax">MkDocsでTeX数式を表示する方法（MathJax）</h1>
+<p>MkDocsを使って技術ブログやノートを作成する際、数式を表示したくなることがあります。<br/>
+Mathjaxでの表示に意外と苦労したので<strong>Markdown内にTeX記法で数式を記述し、MathJaxを使って正しく表示する方法</strong>を記録しておきます。</p>
+<hr/>
+<h2 id="_1">対象</h2>
+<ul>
+<li>MkDocs Material を使って静的サイトを構築している</li>
+<li>数式をMarkdownに埋め込みたい</li>
+<li>表示されない／文字のまま出てしまうといった問題に困っている</li>
+</ul>
+<hr/>
+<h2 id="_2">使用ライブラリと基本方針</h2>
+<p>調べてみたらKaTeXかMathjaxのどちらかを使うことが多いらしい
+KaTexも試してみたものの上手くいかず（未解決）、Mathjaxを試してみることに
+結果としてMkDocs Material + MathJax（v3）の組み合わせになりました<br/>
+Markdownでは <code>$...$</code> でインライン数式、<code>$$...$$</code> または <code>\[...\]</code> でブロック数式を表現します</p>
+<hr/>
+<h2 id="_3">手順概要</h2>
+<ol>
+<li><code>mkdocs.yml</code> にMathJaxのCDNを追加</li>
+<li><code>pymdownx.arithmatex</code> 拡張機能を有効化</li>
+<li><code>mathjax_config.js</code> を作成（任意の初期設定）</li>
+</ol>
+<hr/>
+<h2 id="1-mkdocsyml">1. <code>mkdocs.yml</code> に追記</h2>
+<div class="highlight"><pre><span></span><code><span class="nt">extra_javascript</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">js/mathjax_config.js</span><span class="w">  </span><span class="c1"># ← 後述のファイルパス</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js</span>
+</code></pre></div>
+<hr/>
+<h2 id="2-markdown">2. Markdown拡張機能の有効化</h2>
+<div class="highlight"><pre><span></span><code><span class="nt">markdown_extensions</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">pymdownx.arithmatex</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">inline_syntax</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">'$'</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">'$'</span><span class="p p-Indicator">]</span>
+<span class="w">      </span><span class="nt">generic</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
+<p>ポイント：</p>
+<ul>
+<li><code>inline_syntax</code> を <code>$</code> にすると <code>$S_t$</code> のような書き方が有効になります</li>
+<li><code>generic: true</code> にすることで、<code>MathJax v3</code> で必要なクラスを出力できます</li>
+</ul>
+<hr/>
+<h2 id="3-mathjax">3. MathJax設定ファイルを作成（任意）</h2>
+<p><code>docs/js/mathjax_config.js</code> というファイルを用意し、以下の内容を記述：</p>
+<div class="highlight"><pre><span></span><code><span class="nb">window</span><span class="p">.</span><span class="nx">MathJax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">tex</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">inlineMath</span><span class="o">:</span><span class="w"> </span><span class="p">[[</span><span class="s1">'$'</span><span class="p">,</span><span class="w"> </span><span class="s1">'$'</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="s1">'\\('</span><span class="p">,</span><span class="w"> </span><span class="s1">'\\)'</span><span class="p">]],</span>
+<span class="w">    </span><span class="nx">displayMath</span><span class="o">:</span><span class="w"> </span><span class="p">[[</span><span class="s1">'$$'</span><span class="p">,</span><span class="w"> </span><span class="s1">'$$'</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="s1">'\\['</span><span class="p">,</span><span class="w"> </span><span class="s1">'\\]'</span><span class="p">]]</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nx">options</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">skipHtmlTags</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">'script'</span><span class="p">,</span><span class="w"> </span><span class="s1">'noscript'</span><span class="p">,</span><span class="w"> </span><span class="s1">'style'</span><span class="p">,</span><span class="w"> </span><span class="s1">'textarea'</span><span class="p">,</span><span class="w"> </span><span class="s1">'pre'</span><span class="p">,</span><span class="w"> </span><span class="s1">'code'</span><span class="p">]</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div>
+<blockquote>
+<p>※これはカスタマイズ可能ですが、基本はこのままでOKです。</p>
+</blockquote>
+<hr/>
+<h2 id="4">4. 数式の書き方例</h2>
+<h3 id="_4">インライン数式</h3>
+<div class="highlight"><pre><span></span><code>モデルの状態 $S_t$ は入力 $I_t$ とノイズ $\epsilon_t$ により変化する。
+</code></pre></div>
+<p>→ 表示例：モデルの状態 $S_t$ は入力 $I_t$ とノイズ $\epsilon_t$ により変化する。</p>
+<hr/>
+<h3 id="_5">ブロック数式</h3>
+<div class="highlight"><pre><span></span><code>$$
+dS_t = f(S_t, I<span class="ge">_t) \, dt + \delta(T_</span>t) \cdot \epsilon_t \, dW_t
+$$
+</code></pre></div>
+<p>→ 表示例：</p>
+<div class="arithmatex">\[
+dS_t = f(S_t, I_t) \, dt + \delta(T_t) \cdot \epsilon_t \, dW_t
+\]</div>
+<hr/>
+<h2 id="_6">トラブルシューティング</h2>
+<table>
+<thead>
+<tr>
+<th>症状</th>
+<th>原因と対策</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>$S_t$</code> がそのまま表示される</td>
+<td><code>arithmatex</code> が未設定 or <code>inline_syntax</code> が <code>$</code> になっていない</td>
+</tr>
+<tr>
+<td>二重にレンダリングされる</td>
+<td><code>generic: false</code> のままMathJaxを直接読み込むと競合する場合あり</td>
+</tr>
+<tr>
+<td>MathJaxが効かない</td>
+<td><code>mathjax.min.js</code> の読み込み順に注意（configより後に）</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="jupyter">補足：Jupyter記法と混同しない</h2>
+<p>Jupyterでは <code>$</code> による数式表記が標準ですが、MkDocsでは <code>pymdownx.arithmatex</code> を通じてMathJaxに渡す設定が必要です。</p>
+<hr/>
+<h2 id="_7">まとめ</h2>
+<p>MathJaxを使うことで、MkDocsでもTeX数式を埋め込むことができました。
+ブログ、ノート、研究メモなどに活用する際の表現力が格段に上がるので、ぜひ試してみてください。</p>
 <aside class="md-source-file">
 <span class="md-source-file__fact">
 <span class="md-icon" title="最終更新日">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
 </span>
-<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年3月16日 16:27:51 JST">2025年3月16日</span>
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年5月26日 22:14:56 JST">2025年5月26日</span>
 </span>
 </aside>
 </article>
