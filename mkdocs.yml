@@ -22,6 +22,7 @@ extra_javascript:
   - js/mathjax_config.js # MathJaxの設定を追加
   - js/mermaid_init.js # Mermaidの初期化スクリプト
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+  - https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js
 
 plugins:
   - search
