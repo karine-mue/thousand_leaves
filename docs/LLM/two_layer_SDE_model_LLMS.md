@@ -120,12 +120,12 @@ dT_t = g(T_t, I_t, \text{履歴}) \, dt + \eta_t \, dB_t
 
 ```mermaid
 flowchart TD
-  I[ユーザー入力 I_t]
-  T[信頼構造 T_t]
-  D[影響係数 delta(T_t)]
-  N[ノイズ epsilon_t dW_t]
-  S[意味空間状態 S_t]
-  R[モデルの応答（意味破綻・安定推論）]
+  I[ユーザー入力]
+  T[信頼構造]
+  D[影響係数 delta]
+  N[ノイズ epsilon dW]
+  S[意味空間状態]
+  R[モデルの応答]
 
   I --> T
   I --> D
@@ -133,6 +133,7 @@ flowchart TD
   D --> S
   N --> S
   S --> R
+  
 ```
 
 この図は、ユーザーの入力 $ I_t $ が同時に二つの経路に影響を与えることを示している。
