@@ -1689,14 +1689,14 @@
 指標数に応じた評価モード（全指標使用／一部指標のみ）を表示する。</p>
 </li>
 <li>
-<p>例：</p>
-</li>
-</ul>
-<pre><code>if 3指標評価 → threshold = 0.90
+<p>例：
+<div class="highlight"><pre><span></span><code>if 3指標評価 → threshold = 0.90
 if 2指標評価 → threshold = 0.85
-</code></pre>
-<ul>
-<li>補足：ユーティリティ・再識別リスクなど、目的別にスコア構成を変えることも可能。</li>
+</code></pre></div></p>
+</li>
+<li>
+<p>補足：ユーティリティ・再識別リスクなど、目的別にスコア構成を変えることも可能。</p>
+</li>
 </ul>
 <h2 id="3">3. トレーサビリティ確保のために</h2>
 <ul>
@@ -1711,12 +1711,12 @@ if 2指標評価 → threshold = 0.85
 評価時に使用された閾値や指標の種類も同時記録。</p>
 </li>
 <li>
-<p>出力例：</p>
+<p>出力例：
+<div class="highlight"><pre><span></span><code>step, column, status, metric_used, value, threshold, passed
+4-P, age, calculated, JS, 0.02, 0.05, TRUE
+</code></pre></div></p>
 </li>
 </ul>
-<pre><code>step, column, status, metric_used, value, threshold, passed
-4-P, age, calculated, JS, 0.02, 0.05, TRUE
-</code></pre>
 
 
 

@@ -1733,15 +1733,15 @@ markdown形式のきをそのまま貼れるようにする
 <p>gitHubで新しいリポジトリ（例: <code>sample</code>）をpublicで作成する
 read_meは有っても無くてもよい</p>
 <h3 id="2">2. <strong>ローカルにクローンする</strong></h3>
-<p>powershell（管理者権限付き）で以下を実行する</p>
-<pre><code class="language-sh">cd {ローカルリポジトリを置きたい場所のパス}
-git clone https://github.com/ユーザ名/sample.git
-</code></pre>
+<p>powershell（管理者権限付き）で以下を実行する
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span><span class="o">{</span>ローカルリポジトリを置きたい場所のパス<span class="o">}</span>
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/ユーザ名/sample.git
+</code></pre></div></p>
 <h3 id="3-mkdocs-github-actions">3. MkDocs + GitHub Actionsのセットアップ</h3>
 <p>最小構成は以下となる
 docs配下のindex.mdが全体のホーム
 各ディレクトリ内のindexが個別ページへのナビゲーションとなる</p>
-<pre><code>E:{親ディレクトリ}
+<div class="highlight"><pre><span></span><code>E:{親ディレクトリ}
 │  mkdocs.yml
 │
 ├─.github
@@ -1754,12 +1754,12 @@ docs配下のindex.mdが全体のホーム
             index.md
             entry_1.md
             entry_2.md
-</code></pre>
+</code></pre></div>
 <p>設定ファイルは2種類
 - mkdocs.yml
 MkDocs用の設定ファイル。構造等を記述する。
-記載例は以下</p>
-<pre><code>site_name: &quot;{サイト名}&quot;
+記載例は以下
+<div class="highlight"><pre><span></span><code>site_name: &quot;{サイト名}&quot;
 site_url: &quot;https://{ユーザ名}.github.io/{任意名}/&quot;
 theme:
   name: &quot;material&quot;
@@ -1769,13 +1769,10 @@ nav:
       - 概要: {dir}/index.md
       - entry_1: {dir}/entry_1.md
       - entry_2: {dir}/entry_2.md
-
-</code></pre>
-<ul>
-<li>.github/workflows/gh-pages.yml
-GitHub Actionsでmainが更新された時に自動でgithub pagesへ反映するための設定ファイル</li>
-</ul>
-<pre><code>name: Deploy MkDocs
+</code></pre></div>
+- .github/workflows/gh-pages.yml
+GitHub Actionsでmainが更新された時に自動でgithub pagesへ反映するための設定ファイル
+<div class="highlight"><pre><span></span><code>name: Deploy MkDocs
 
 on:
   push:
@@ -1800,9 +1797,8 @@ jobs:
         with:
           personal_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           publish_dir: ./site
-
-</code></pre>
-<p>ただこのままpushしても最初は失敗する
+</code></pre></div>
+ただこのままpushしても最初は失敗する
 github側でPAT(Personal Access Token)の設定が必要</p>
 <h3 id="4">4 ローカルテスト</h3>
 <p>Docker を使って MkDocs の動作確認を行う。</p>

@@ -1891,14 +1891,13 @@
 </tr>
 </tbody>
 </table>
-<pre><code class="language-python">import os
-os.path.exists(&quot;data/input/sample.csv&quot;)  # ファイル存在確認
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s2">&quot;data/input/sample.csv&quot;</span><span class="p">)</span>  <span class="c1"># ファイル存在確認</span>
 
-df = pd.read_csv(&quot;data/input/sample.csv&quot;, encoding=&quot;utf-8&quot;)
-print(df.shape)  # 行数・列数確認
-print(df.columns)  # 列名確認
-
-</code></pre>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/input/sample.csv&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>  <span class="c1"># 行数・列数確認</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>  <span class="c1"># 列名確認</span>
+</code></pre></div>
 <h3 id="2-na">2. 欠損値（NA）の確認</h3>
 <ul>
 <li>
@@ -1917,10 +1916,9 @@ NAの偏りが指標結果を歪める可能性もある</p>
 <code>missingno.matrix(df)</code></p>
 </li>
 </ul>
-<pre><code class="language-python">na_ratio = df.isna().mean().round(3)
-print(na_ratio.sort_values(ascending=False))  # 欠損率が高い順に表示
-
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">na_ratio</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">na_ratio</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>  <span class="c1"># 欠損率が高い順に表示</span>
+</code></pre></div>
 <h3 id="3">3. ユニーク値と集中度の確認</h3>
 <ul>
 <li>目的：
@@ -1930,10 +1928,10 @@ print(na_ratio.sort_values(ascending=False))  # 欠損率が高い順に表示
 完全ユニーク列（識別子）や一極集中型の列（偏りが強いカテゴリ）はスコア評価のバイアス要因となり、再識別リスクや過学習を引き起こす可能性がある。
 例えば値の一極集中（例：90%が同じ値）は分布指標 δ 等に影響する
 ユニーク率=1.0 の列は識別子候補（再識別リスクが高い）</p>
-<pre><code class="language-python">uniq_abs  = df.nunique()                      # 絶対数
-uniq_rate = (df.nunique()/len(df)).round(3)   # 割合
-top_freq  = df[col].value_counts(normalize=True).head()
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">uniq_abs</span>  <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span>                      <span class="c1"># 絶対数</span>
+<span class="n">uniq_rate</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">))</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>   <span class="c1"># 割合</span>
+<span class="n">top_freq</span>  <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div>
 <h3 id="4">4. データ型の確認と明示的な修正</h3>
 <ul>
 <li>
@@ -1945,11 +1943,11 @@ top_freq  = df[col].value_counts(normalize=True).head()
 データ型が誤っていると、相関・分布距離などの指標が正しく計算されない。特にobject型の誤解釈が多く、処理が不安定になる。</p>
 </li>
 </ul>
-<pre><code class="language-python">df.dtypes
-df['price'] = pd.to_numeric(df['price'], errors='coerce')
-df['id']    = df['id'].astype('category')
-df['date']  = pd.to_datetime(df['date'], format='%Y-%m-%d')
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">df</span><span class="o">.</span><span class="n">dtypes</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">],</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;coerce&#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span>    <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;category&#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">],</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span>
+</code></pre></div>
 <h3 id="5">5. 一部指標に適さない列の見極め</h3>
 <ul>
 <li>
@@ -2004,10 +2002,10 @@ df['date']  = pd.to_datetime(df['date'], format='%Y-%m-%d')
 </tr>
 </tbody>
 </table>
-<pre><code class="language-python">df.nunique() == len(df)  # 完全ユニーク
-df.isna().all()          # 全NA列の検出
-df.nunique() == 1        # 定数列の検出
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">df</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>  <span class="c1"># 完全ユニーク</span>
+<span class="n">df</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>          <span class="c1"># 全NA列の検出</span>
+<span class="n">df</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span>        <span class="c1"># 定数列の検出</span>
+</code></pre></div>
 <h3 id="6">6.  順序性や構造の確認（手動チェック推奨）</h3>
 <ul>
 <li>
@@ -2042,10 +2040,10 @@ df.nunique() == 1        # 定数列の検出
 分布の偏りや尖度が極端な列に指標を適用すると、誤って異常値と判定されたりユーティリティの誤解釈に繋がることがある</p>
 </li>
 </ul>
-<pre><code class="language-python">df[col].hist()  # ヒストグラムで分布形状を確認
-df.boxplot(column=col)  # 外れ値も含めた分布の概要を視覚化
-df[col].plot(kind='density')  # 滑らかな密度曲線を見る
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">()</span>  <span class="c1"># ヒストグラムで分布形状を確認</span>
+<span class="n">df</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="n">col</span><span class="p">)</span>  <span class="c1"># 外れ値も含めた分布の概要を視覚化</span>
+<span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;density&#39;</span><span class="p">)</span>  <span class="c1"># 滑らかな密度曲線を見る</span>
+</code></pre></div>
 <h3 id="8">8. 外れ値の検出と対応方針</h3>
 <ul>
 <li>
@@ -2059,10 +2057,10 @@ df[col].plot(kind='density')  # 滑らかな密度曲線を見る
 異常値を真の傾向と誤認し、不適切な判断を導く恐れがある</p>
 </li>
 </ul>
-<pre><code class="language-python">from scipy.stats import zscore
-df[&quot;z&quot;] = zscore(df[col])
-outliers = df[df[&quot;z&quot;].abs() &gt; 3]  # Zスコアによる外れ値判定
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">zscore</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;z&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">zscore</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">])</span>
+<span class="n">outliers</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;z&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">]</span>  <span class="c1"># Zスコアによる外れ値判定</span>
+</code></pre></div>
 <h3 id="9-id">9. ID／主キーの一意性確認</h3>
 <ul>
 <li>
@@ -2076,9 +2074,9 @@ ID重複の存在により、意図しない多重マッチや集計ミスが発
 特に再識別リスクの評価やスコア統合処理などで誤集計の原因となる</p>
 </li>
 </ul>
-<pre><code class="language-python">assert df[&quot;id&quot;].is_unique, &quot;IDに重複があります&quot;
-df[&quot;id&quot;].duplicated().sum()  # 重複件数を確認
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="k">assert</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">is_unique</span><span class="p">,</span> <span class="s2">&quot;IDに重複があります&quot;</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">duplicated</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>  <span class="c1"># 重複件数を確認</span>
+</code></pre></div>
 <h3 id="10">10. ドメイン知識の反映</h3>
 <ul>
 <li>

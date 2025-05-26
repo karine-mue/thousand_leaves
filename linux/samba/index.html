@@ -1860,7 +1860,7 @@ ubuntuサーバにログインし、 <code>nmcli device show</code> でデバイ
 <code>sudo nano /etc/netplan/01-netcfg.yaml</code></p>
 </li>
 </ul>
-<pre><code class="language-01-netcfg.yaml">network:
+<div class="highlight"><pre><span></span><code>network:
   version: 2
   ethernets:
     {インターフェース名}:
@@ -1875,7 +1875,7 @@ ubuntuサーバにログインし、 <code>nmcli device show</code> でデバイ
         addresses
           - aaa.aaa.aaa.aaa
           - bbb.bbb.bbb.bbb
-</code></pre>
+</code></pre></div>
 <ul>
 <li>netplanを適用する
 <code>sudo netplan apply</code></li>
