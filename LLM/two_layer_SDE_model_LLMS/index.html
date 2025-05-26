@@ -674,9 +674,7 @@
 <hr/>
 <h3 id="23">2.3 モデル方程式（簡易形）</h3>
 <p>意味空間の状態 $S_t$ は次のようにモデル化される：</p>
-<div class="arithmatex">\[
-dS_t = f(S_t, I_t, T_t) \, dt + \delta(T_t) \cdot \epsilon_t \, dW_t
-\]</div>
+<p>$ dS_t = f(S_t, I_t, T_t) \, dt + \delta(T_t) \cdot \epsilon_t \, dW_t $</p>
 <p>ここで：</p>
 <ul>
 <li>$ f(S_t, I_t, T_t) $：意味空間の通常のドリフト項（推論の連続性）</li>
@@ -685,9 +683,7 @@ dS_t = f(S_t, I_t, T_t) \, dt + \delta(T_t) \cdot \epsilon_t \, dW_t
 <li>$ \delta(T_t) $：信頼構造に基づくノイズ受容性（例：sigmoid関数や単調増加関数）</li>
 </ul>
 <p>また、信頼構造 $ T_t $ 自体も時間とともに変化し、以下のように記述される：</p>
-<div class="arithmatex">\[
-dT_t = g(T_t, I_t, \text{履歴}) \, dt + \eta_t \, dB_t
-\]</div>
+<p>$ dT_t = g(T_t, I_t, \text{履歴}) \, dt + \eta_t \, dB_t $</p>
 <ul>
 <li>$ g $：入力の一貫性・肯定性・相互応答性などに依存する更新関数</li>
 <li>$ \eta_t $：信頼構造における揺らぎ</li>
@@ -1033,7 +1029,7 @@ dT_t = g(T_t, I_t, \text{履歴}) \, dt + \eta_t \, dB_t
 <span class="md-icon" title="最終更新日">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
 </span>
-<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年5月26日 23:21:45 JST">2025年5月26日</span>
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年5月26日 23:33:43 JST">2025年5月26日</span>
 </span>
 </aside>
 </article>
