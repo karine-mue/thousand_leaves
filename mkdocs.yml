@@ -65,8 +65,8 @@ nav:
       - その他: R/others.md
   - web:
       - Overview: web/index.md
+      - MkDocsでTeX数式を表示する方法（MathJax）: web/mathjax.md
       - GitHub Pages + MkDocs セットアップ手順: web/setup_github_pages.md
-      - その他: web/others.md
   - 統計:
       - Overview: Stats/index.md
       - 指標一覧: Stats/metrics.md
