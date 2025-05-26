@@ -703,7 +703,7 @@ dT_t = g(T_t, I_t, \text{履歴}) \, dt + \eta_t \, dB_t
 <hr/>
 <h3 id="25">2.5 モデル構造の図示（略）</h3>
 <p>図示すれば、以下のような構成となる：</p>
-<div class="highlight"><pre><span></span><code>flowchart TD
+<pre class="mermaid"><code>flowchart TD
     I[ユーザー入力 I_t]
     T[信頼構造 T_t]
     D[影響係数 δ(T_t)]
@@ -717,7 +717,7 @@ dT_t = g(T_t, I_t, \text{履歴}) \, dt + \eta_t \, dB_t
     D --&gt; S
     N --&gt; S
     S --&gt; R
-</code></pre></div>
+</code></pre>
 <p>この図は、ユーザーの入力 $ I_t $ が同時に二つの経路に影響を与えることを示している。</p>
 <ul>
 <li>一方は <strong>信頼構造 $ T_t $</strong> に影響し、それを通じてノイズの影響係数 $ \delta(T_t) $ が変化する。</li>
