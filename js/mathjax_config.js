@@ -1,11 +1,9 @@
 window.MathJax = {
   tex: {
-    inlineMath: [['$', '$'], ['\\(', '\\)']],
-    displayMath: [['$$', '$$'], ['\\[', '\\]']]
+    inlineMath: [['$', '$']],
+    displayMath: [['$$', '$$']]
   },
   options: {
-    renderActions: {
-      addMenu: []
-    }
+    skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
   }
 };
