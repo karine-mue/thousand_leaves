@@ -5,12 +5,10 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<link href="https://karine-mue.github.io/thousand_leaves/linux/cmd/" rel="canonical"/>
-<link href="../" rel="prev"/>
-<link href="../shell/" rel="next"/>
+<link href="https://karine-mue.github.io/thousand_leaves/linux/chache/" rel="canonical"/>
 <link href="../../images/favicon.ico" rel="icon"/>
 <meta content="mkdocs-1.6.1, mkdocs-material-9.6.14" name="generator"/>
-<title>コマンドメモ - Thousand Leaves Notes</title>
+<title>キャッシュについて - Thousand Leaves Notes</title>
 <link href="../../assets/stylesheets/main.342714a4.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
@@ -22,6 +20,9 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
+<a class="md-skip" href="#_1">
+          コンテンツにスキップ
+        </a>
 </div>
 <div data-md-component="announce">
 </div>
@@ -45,7 +46,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              コマンドメモ
+              キャッシュについて
             
           </span>
 </div>
@@ -110,7 +111,7 @@
 
       </a>
 </li>
-<li class="md-tabs__item md-tabs__item--active">
+<li class="md-tabs__item">
 <a class="md-tabs__link" href="../">
           
   
@@ -216,16 +217,16 @@
   </span>
 </a>
 </li>
-<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
 <span class="md-ellipsis">
     Linux
     
   </span>
 <span class="md-nav__icon md-icon"></span>
 </label>
-<nav aria-expanded="true" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<nav aria-expanded="false" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
 <label class="md-nav__title" for="__nav_2">
 <span class="md-nav__icon md-icon"></span>
             Linux
@@ -239,15 +240,6 @@
   </span>
 </a>
 </li>
-<li class="md-nav__item md-nav__item--active">
-<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
-<a class="md-nav__link md-nav__link--active" href="./">
-<span class="md-ellipsis">
-    コマンドメモ
-    
-  </span>
-</a>
-</li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../shell/">
 <span class="md-ellipsis">
@@ -257,17 +249,25 @@
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../others/">
+<a class="md-nav__link" href="../samba/">
 <span class="md-ellipsis">
-    その他
+    ミニPCを自宅内ファイルサーバにする
     
   </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../samba/">
+<a class="md-nav__link" href="../find_exec/">
 <span class="md-ellipsis">
-    ミニPCを自宅内ファイルサーバにする
+    見つけた対象に対して処理をする(find -exec)
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../cache.md">
+<span class="md-ellipsis">
+    キャッシュについて
     
   </span>
 </a>
@@ -616,13 +616,127 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1>コマンドメモ</h1>
+<h1 id="_1">キャッシュについて</h1>
+<h2 id="1">1. キャッシュとは</h2>
+<p>ディスク上にあるデータを処理する場合、一度読み込んでから処理をします
+その一時置き場です</p>
+<h2 id="2-linux">2. Linuxのキャッシュの種類と捨て方</h2>
+<table>
+<thead>
+<tr>
+<th>値</th>
+<th>捨てる対象</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>1</code></td>
+<td><strong>PageCache</strong></td>
+<td>ファイルデータのキャッシュ（read() された内容など）</td>
+</tr>
+<tr>
+<td><code>2</code></td>
+<td><strong>dentries / inodes</strong></td>
+<td>ディレクトリエントリ・inode構造体のキャッシュ</td>
+</tr>
+<tr>
+<td><code>3</code></td>
+<td><strong>両方（1 + 2）</strong></td>
+<td>PageCache + dentries + inodes の全キャッシュ</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2-1-1pagecache">2-1. 【1】PageCache</h3>
+<ul>
+<li>
+<p><strong>PageCacheとは？</strong>
+Linuxではファイルを読み書きするたびに、一度読み込んだデータをメモリ上に保持します
+これが PageCacheです
+たとえば <code>cat bigfile.csv</code> の後にもう一度同じファイルを読むとディスクではなくメモリから読むため非常に速いです
+cat, grep, wc などで読むとここに溜まります</p>
+</li>
+<li>
+<p><strong>PageCache に含まれるのは？</strong></p>
+</li>
+<li>ファイルのバイナリ/テキストの実データ</li>
+<li>
+<p>read() された結果</p>
+</li>
+<li>
+<p><strong>ダーティキャッシュ（Dirty Pages）とは？</strong>
+書き換えられたけどまだディスクに反映されていないページのことです
+たとえば echo test &gt;&gt; file.txt 直後はディスクに未反映ですが、PageCacheには反映済です
+drop_cacheはクリーンなキャッシュしか捨てられない（未書き込みは捨てられない）ため、先に<code>sync</code>（書き込み）が必要です
+<div class="highlight"><pre><span></span><code>sudo sync  # Dirtyページをフラッシュ（書き込み）
+echo 1 | sudo tee /proc/sys/vm/drop_caches
+</code></pre></div></p>
+</li>
+</ul>
+<h3 id="2-2-2dentries-inodes">2-2. 【2】<strong>dentries / inodes</strong></h3>
+<ul>
+<li><strong>inodesとは？</strong></li>
+<li>ファイルの メタデータを格納する構造体</li>
+<li>含まれるもの：</li>
+<li>ファイルサイズ</li>
+<li>所有者・パーミッション</li>
+<li>タイムスタンプ（作成・変更・アクセス）</li>
+<li>
+<p>ディスクブロックの位置情報（＝どこに保存されているか）</p>
+</li>
+<li>
+<p><strong>dentriesとは？</strong></p>
+</li>
+<li>ファイル名とinodeの対応付けのこと</li>
+<li>
+<p>パス /var/log/syslog を解決するための辞書のようなもの</p>
+</li>
+<li>
+<p><strong>構造体がキャッシュされる理由</strong>
+find や ls -R などで大量にディレクトリを走査するとinodeやdentryが大量にメモリにキャッシュされます
+そのため何がどこにあったかを持っておく仕組みになっています
+再度のアクセスは速くなるもののメモリ圧迫の原因にもなります</p>
+</li>
+</ul>
+<h2 id="3">3. 実務での選び方</h2>
+<table>
+<thead>
+<tr>
+<th>状況</th>
+<th>推奨値</th>
+<th>解説</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ファイル読み込み速度を初期状態で再計測したい</td>
+<td><code>1</code></td>
+<td>I/Oキャッシュの影響を除くため</td>
+</tr>
+<tr>
+<td>大量の <code>find</code> / <code>ls</code> でメモリが食われてる</td>
+<td><code>2</code></td>
+<td>inode/dentryがメモリ圧迫しているケース</td>
+</tr>
+<tr>
+<td><strong>完全初期化</strong>して負荷テストしたい</td>
+<td><code>3</code></td>
+<td>実運用では慎重に（全体に影響）</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>drop_caches は読み取り専用の再利用メモリを開放するだけで、システムに悪影響は基本的にありません（sync 実行が前提）。</li>
+<li>パフォーマンスは一時的に悪化します。</li>
+<li>OS全体に影響するため、本番環境では通常使用しません。</li>
+<li>Docker や仮想環境ではホストOSの権限が必要で実行できないことが多いです。</li>
+</ul>
 <aside class="md-source-file">
 <span class="md-source-file__fact">
 <span class="md-icon" title="最終更新日">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
 </span>
-<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年3月16日 16:27:51 JST">2025年3月16日</span>
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年6月1日 19:16:40 JST">2025年6月1日</span>
 </span>
 </aside>
 </article>

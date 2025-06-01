@@ -5,12 +5,12 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<link href="https://karine-mue.github.io/thousand_leaves/linux/others/" rel="canonical"/>
-<link href="../shell/" rel="prev"/>
-<link href="../samba/" rel="next"/>
+<link href="https://karine-mue.github.io/thousand_leaves/linux/find_exec/" rel="canonical"/>
+<link href="../samba/" rel="prev"/>
+<link href="../../pc-build/" rel="next"/>
 <link href="../../images/favicon.ico" rel="icon"/>
 <meta content="mkdocs-1.6.1, mkdocs-material-9.6.14" name="generator"/>
-<title>その他 - Thousand Leaves Notes</title>
+<title>見つけた対象に対して処理をする(find -exec) - Thousand Leaves Notes</title>
 <link href="../../assets/stylesheets/main.342714a4.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
@@ -22,6 +22,9 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
+<a class="md-skip" href="#find-exec">
+          コンテンツにスキップ
+        </a>
 </div>
 <div data-md-component="announce">
 </div>
@@ -45,7 +48,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              その他
+              見つけた対象に対して処理をする(find -exec)
             
           </span>
 </div>
@@ -240,26 +243,9 @@
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cmd/">
-<span class="md-ellipsis">
-    コマンドメモ
-    
-  </span>
-</a>
-</li>
-<li class="md-nav__item">
 <a class="md-nav__link" href="../shell/">
 <span class="md-ellipsis">
     Shell
-    
-  </span>
-</a>
-</li>
-<li class="md-nav__item md-nav__item--active">
-<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
-<a class="md-nav__link md-nav__link--active" href="./">
-<span class="md-ellipsis">
-    その他
     
   </span>
 </a>
@@ -268,6 +254,77 @@
 <a class="md-nav__link" href="../samba/">
 <span class="md-ellipsis">
     ミニPCを自宅内ファイルサーバにする
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    見つけた対象に対して処理をする(find -exec)
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+<span class="md-ellipsis">
+    見つけた対象に対して処理をする(find -exec)
+    
+  </span>
+</a>
+<nav aria-label="目次" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1">
+<span class="md-ellipsis">
+      1. 基本形
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2">
+<span class="md-ellipsis">
+      2. コマンド例
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3">
+<span class="md-ellipsis">
+      3. \;と+の違い
+    </span>
+</a>
+<nav aria-label="3. \;と+の違い" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-1">
+<span class="md-ellipsis">
+      3-1. 注意点
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4-xargs">
+<span class="md-ellipsis">
+      4. +とxargsの違い
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../cache.md">
+<span class="md-ellipsis">
+    キャッシュについて
     
   </span>
 </a>
@@ -616,13 +673,226 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1>その他</h1>
+<h1 id="find-exec">見つけた対象に対して処理をする(find -exec)</h1>
+<p>特定のディレクトリ配下のファイルに対して一律に処理をかけたいことがあります
+そういう時に便利なのがこの<code>find -exec</code>です</p>
+<h2 id="1">1. 基本形</h2>
+<p><code>find [検索パス] [条件] -exec [コマンド] {} \;</code></p>
+<ul>
+<li>検索パス: カレントディレクトリ（今いる場所）なら . </li>
+<li>条件: 形式や名前など<ul>
+<li>ファイルに限定する: <code>-type f</code></li>
+<li>名前: <code>-name "prefix*"</code> など。正規表現が使えます。</li>
+</ul>
+</li>
+<li>コマンド: <code>wc -l</code>(行数カウント)、 <code>cp</code>（コピー）など</li>
+<li><code>{}</code>: findで見つけたファイルがここに入る</li>
+<li><code>\;</code> : -execの終端符号（詳しくは「3. <code>\;</code>と<code>+</code>の違い」にて）</li>
+</ul>
+<h2 id="2">2. コマンド例</h2>
+<ul>
+<li>
+<p><strong>配下にある特定文字列で始まるファイルの行数を取得し、csvファイルとして出力する</strong>
+<code>find . -type f -name "prefix_*" -exec sh -c 'for f; do echo "$(wc -l &lt; "$f"),$f"; done' _ {} + &gt; line_counts.csv</code></p>
+</li>
+<li>
+<p><strong>標準出力でok(csv不要)ならこれでも(行数カウント)</strong>
+<code>find . -type f -name "prefix_*" -exec sh -c 'for f; do wc -l "$f"; done' _ {} +</code></p>
+</li>
+<li>
+<p><strong>配下の特定名称のファイルに対して置換処理を実行する</strong>
+<code>find . -type f -name "filename.txt" -exec sed -i.bak 's/old_string/new_string/g' {} \;</code></p>
+</li>
+<li>
+<p><strong>拡張子を指定して(.txt)現在のディレクトリ配下のファイルを特定のディレクトリ(backup)へ移動する</strong>
+<code>find . -name "*.txt" -exec cp {} /backup/ \;</code></p>
+</li>
+<li>
+<p><strong>拡張子を変換して移動する（例：.md → .txt）</strong>
+<code>find . -name "*.md" -exec sh -c 'mv "$1" "${1%.md}.txt"' _ {} \;</code></p>
+</li>
+<li>
+<p><strong>確認付き削除</strong>
+<code>find . -name "*.bak" -ok rm {} \;</code></p>
+</li>
+<li>
+<p><strong>確認無し削除</strong>
+<code>find . -name "*.tmp" -exec rm {} \;</code></p>
+</li>
+<li>
+<p><strong>ファイル名を表示する</strong>
+<code>find . -type f -exec echo "Found file:" {} \;</code></p>
+</li>
+</ul>
+<h2 id="3">3. <code>\;</code>と<code>+</code>の違い</h2>
+<p><code>\;</code>は逐次実行、<code>+</code>はまとめて実行する、という違いがあります
+| 特徴   | <code>-exec ... \;</code> | <code>-exec ... +</code>                |
+| ---- | -------------- | ---------------------------- |
+| 実行方法 | <strong>1ファイルずつ</strong>実行  | <strong>複数ファイルまとめて</strong>実行             |
+| 処理回数 | ファイル数だけコマンドを実行 | ファイルを<strong>可能なだけまとめて</strong>1回で実行      |
+| 効率   | 遅い（非効率）        | 速い（効率的）                      |
+| 対応状況 | ほぼすべての環境で使える   | <strong>GNU find限定</strong>（Macや古い環境では注意） |</p>
+<h3 id="3-1">3-1. <strong>注意点</strong></h3>
+<p>主な注意点と推奨構文は以下のとおり</p>
+<table>
+<thead>
+<tr>
+<th>処理内容</th>
+<th>推奨構文</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>削除（<code>rm</code>）</td>
+<td><code>-exec rm {} +</code></td>
+</tr>
+<tr>
+<td>行数確認（<code>wc -l</code>）</td>
+<td><code>-exec wc -l {} +</code></td>
+</tr>
+<tr>
+<td>コピー（<code>cp</code>, <code>mv</code>）</td>
+<td>基本は <code>\;</code>（要個別）</td>
+</tr>
+<tr>
+<td>個別ログ出力など</td>
+<td><code>\;</code> で個別に処理</td>
+</tr>
+<tr>
+<td>任意スクリプトでループ</td>
+<td><code>sh -c 'for f; do ...; done' _ {} +</code></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>コマンドによってはまとめて実行することができない:</strong>
+mv や cp は2つの引数しか取れないので + は使いにくいです</li>
+<li><strong>順序の保障がありません:</strong>
+<code>+</code> ではファイル順序は保証されません、そのため意図した結果と違うものになることがあります</li>
+<li><strong>環境によって未対応:</strong>
+古い find（特にBSD系など）では <code>+</code>は 非対応です
+<code>-execdir</code> と組み合わせるとさらに非対応が増えます</li>
+<li><strong>メモリ圧迫・I/O過多:</strong>
+<code>+</code> はOSの <code>ARG_MAX</code> に達するまでファイルを詰め込みます
+多数の大ファイルを <code>cat</code> したりすると、I/Oが詰まって処理が落ちることがあります
+特にSSD/HDDのキャッシュが枯渇してI/O waitが増加しやすいです
+vmstatなどで稼働状況をモニタリングし、詰まっているようなら小分けにするとよいです</li>
+<li><strong>小分け例</strong>
+<code>find . -type f -name "prefix_*" -exec sh -c 'for f; do wc -l "$f"; sleep 0.01; done' _ {} +</code></li>
+<li><strong>キャッシュで騙される:</strong>
+例えば「テスト環境で早く終わるのに、本番では異様に遅い」ようなケースがあります
+キャッシュにあるか無いかで処理時間は雲泥の差なので、処理時間予測をする際の処理速度ベースは予めキャッシュをクリアした状態取っておいたほうが外れがないです
+※テスト環境推奨。<strong>本番環境での実行は慎重に、他の処理に影響をあたえることがあります</strong>
+キャッシュの捨て方: 
+<div class="highlight"><pre><span></span><code>sudo sync
+sudo sh -c "echo 3 &gt; /proc/sys/vm/drop_caches"
+</code></pre></div>
+※キャッシュについての詳細は <a href="../chache/">キャッシュについて</a>もあわせて参照してください</li>
+</ul>
+<h2 id="4-xargs">4. <code>+</code>と<code>xargs</code>の違い</h2>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th><code>find -exec ... +</code></th>
+<th><code>xargs</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>引数の渡し方</td>
+<td><code>find</code> がファイル名を直接コマンドに渡す</td>
+<td>標準入力から読み取り、コマンドに渡す</td>
+</tr>
+<tr>
+<td>空白・改行・特殊文字</td>
+<td>自動で安全に処理（POSIX的に安全）</td>
+<td>デフォルトでは<strong>空白・改行で壊れる</strong>（<code>-0</code>が必要）</td>
+</tr>
+<tr>
+<td>NULL区切り対応</td>
+<td>不要（<code>{}</code>展開は安全）</td>
+<td><strong><code>-0</code>と<code>-print0</code>で対応必須</strong></td>
+</tr>
+<tr>
+<td>並列処理</td>
+<td>不可</td>
+<td><code>-P</code> オプションで並列可能（例：<code>xargs -P 4</code>）</td>
+</tr>
+<tr>
+<td>コマンドテンプレート</td>
+<td>固定：<code>{}</code>のみ（複雑な構造には弱い）</td>
+<td><code>-I {}</code> で柔軟に構造化可能</td>
+</tr>
+<tr>
+<td>エラー処理</td>
+<td>ファイル1つずつ失敗しても他へ影響しにくい</td>
+<td>中央で止まることもある（並列時要注意）</td>
+</tr>
+<tr>
+<td>実行対象の柔軟性</td>
+<td><code>find</code> の内部制御なので密結合</td>
+<td><code>find</code> 以外の出力でも使える（汎用性高い）</td>
+</tr>
+<tr>
+<td>パフォーマンス</td>
+<td>非常に高速（<code>rm {}</code> +で1回呼び出し）</td>
+<td>同等以上だが細かく制御できる分やや複雑</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>具体例: .logファイルをまとめて削除</strong></li>
+<li><code>find . -name "*.log" -exec rm {} +</code> → 安全かつ高速</li>
+<li><code>find . -name "*.log" | xargs rm</code> → 速いが状況次第で危険（ファイル名に空白が入っていると失敗する）</li>
+<li>
+<p><code>find . -name "*.log" -print0 | xargs -0 rm</code> → 上記対応として <code>-0</code> オプションを入れる</p>
+</li>
+<li>
+<p><strong>考慮すべきこと</strong>
+<code>find -exec +</code>はGNU拡張なのでPOSIX準拠ではなく、macOSや一部UNIXでは使えないことがある。
+<code>+</code>を使うと<code>find</code>コマンドが失敗するケースがある</p>
+</li>
+<li>
+<p><strong>使い分けまとめ</strong></p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>ケース</th>
+<th>推奨</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>高速かつ安全にまとめて処理</strong></td>
+<td><code>find -exec {} +</code></td>
+</tr>
+<tr>
+<td><strong>並列処理したい</strong></td>
+<td><code>xargs -P</code></td>
+</tr>
+<tr>
+<td><strong>複雑なコマンドテンプレートを使いたい</strong></td>
+<td><code>xargs -I {}</code></td>
+</tr>
+<tr>
+<td><strong>POSIX環境の互換性を重視</strong></td>
+<td><code>xargs</code>（より広範に対応）</td>
+</tr>
+<tr>
+<td><strong>1ファイルずつ安全に処理したい</strong></td>
+<td><code>find -exec {} \;</code></td>
+</tr>
+</tbody>
+</table>
 <aside class="md-source-file">
 <span class="md-source-file__fact">
 <span class="md-icon" title="最終更新日">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
 </span>
-<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年3月16日 16:27:51 JST">2025年3月16日</span>
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年6月1日 19:16:40 JST">2025年6月1日</span>
 </span>
 </aside>
 </article>
