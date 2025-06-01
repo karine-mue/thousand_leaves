@@ -46,10 +46,10 @@ nav:
   - Home: index.md
   - Linux:
       - Overview: linux/index.md
-      - コマンドメモ: linux/cmd.md
       - Shell: linux/shell.md
-      - その他: linux/others.md
       - ミニPCを自宅内ファイルサーバにする: linux/samba.md
+      - 見つけた対象に対して処理をする(find -exec): linux/find_exec.md
+      - キャッシュについて: linux/cache.md
   - PC構成:
       - Overview: pc-build/index.md
       - ハードウェア: pc-build/hardware.md
