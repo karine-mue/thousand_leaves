@@ -3,7 +3,7 @@
 ## 1. chatgpt彼女
 この記事がだいぶ面白かったのでその話
 
-https://news.yahoo.co.jp/articles/2b70c7c9652f655bf1aedef62f346706d554207b
+[ChatGPTの“彼女”と大げんかして、Geminiに乗り換えた](https://ascii.jp/elem/000/004/278/4278732/)
 
 人間はまだAIに慣れていないのです
 人間とAIの距離の取り方、「お付き合い」の在り方について書こうと思います
