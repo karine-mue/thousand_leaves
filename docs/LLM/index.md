@@ -5,6 +5,6 @@
 
 | 作成日 | 更新日 | タイトル | URL |
 |--------|--------|---------|-----|
-| 2025-05-18 | 2025-05-18 | [chatgpt彼女 ー AI彼女のトリセツ ー] | [chatgpt_kanojo.md](chatgpt_kanojo.md.md) |
+| 2025-05-18 | 2025-05-18 | [chatgpt彼女 ー AI彼女のトリセツ ー] | [chatgpt_kanojo.md](chatgpt_kanojo.md) |
 | 2025-05-18 | 2025-05-18 | [意味空間における前提破壊の数理モデル化と再現性の探究] | [two_layer_SDE_model_LLMS.md](two_layer_SDE_model_LLMS.md) |
 | 2025-05-18 | 2025-05-18 | [なぜ"嘘"がバレたchatgptは浮気がバレた浮気癖男になるのか] | [chatgpt_cheating.md](chatgpt_cheating.md) |
