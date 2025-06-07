@@ -53,36 +53,32 @@ json-flattener-poc(https://github.com/karine-mue/json-flattener-poc/tree/main)
 Pythonと標準ライブラリと一部のlinuxコマンドが使えます
 
 - **使えるPythonライブラリ**
-  - 標準ライブラリ: os, sys, datetimeなど
-  - OS操作系: subprocess, shutil, zipfile, pathlibなど
-  - pandas: 一部制約有り
-    あまりデータが大きすぎると無理
-    pandas-stubsや依存ライブラリが必要で入れられないもの（openpyxl, pyarrowなど）は不可
-  - numpy: 軽量版が使える
-  - matplotlib: おえかき
-</br>
+    - 標準ライブラリ: os, sys, datetimeなど
+    - OS操作系: subprocess, shutil, zipfile, pathlibなど
+    - pandas: 一部制約有り
+      あまりデータが大きすぎると無理
+      pandas-stubsや依存ライブラリが必要で入れられないもの（openpyxl, pyarrowなど）は不可
+    - numpy: 軽量版が使える
+    - matplotlib: おえかき
 - **使えないPythonライブラリ**
 pipで入れなければならないものは無理で、使えないもののうち有名どころはこんな感じです
-  - scipy: 意外ですが使えません
-  - sklearn: そもそも長時間回せないですしね
-  - requests: オンラインに出られないので無理
-  - flask, fastapiなど: サーバ系も無理
-</br>
+    - scipy: 意外ですが使えません
+    - sklearn: そもそも長時間回せないですしね
+    - requests: オンラインに出られないので無理
+    - flask, fastapiなど: サーバ系も無理
 - **使えるLinuxコマンド**
 pythonの`subprocess`経由でlinuxコマンドを実行します
 使える代表的なコマンドは以下です
-  - ファイル操作: ls, find, cat, du, cp, mv, rm
-  - テキスト処理: head, tail, wc, sort, grep(アクセス不可のディレクトリはNG)
-  - 圧縮処理: zip, unzip
-  - pythonスクリプト呼び出し: python3
-  - システム状態: df, uptime, whoami(仮想環境制約あり)
-</br>
+    - ファイル操作: ls, find, cat, du, cp, mv, rm
+    - テキスト処理: head, tail, wc, sort, grep(アクセス不可のディレクトリはNG)
+    - 圧縮処理: zip, unzip
+    - pythonスクリプト呼び出し: python3
+    - システム状態: df, uptime, whoami(仮想環境制約あり)
 - **使えないLinuxコマンド**
 大体想像つくかと思いますが使えない代表的なコマンドはこんな感じです
-  - ネットワーク関連（オフラインなので）: ping, curl, wget, hostname
-  - システム操作（制限付き環境）: ps, top, netstat, ip, ipconfig
-  - デーモン・ユーザ（仮想環境なのでプロセス情報や実ユーザ無し）: who, id, groups, sudo, systemctl
-</br>
+    - ネットワーク関連（オフラインなので）: ping, curl, wget, hostname
+    - システム操作（制限付き環境）: ps, top, netstat, ip, ipconfig
+    - デーモン・ユーザ（仮想環境なのでプロセス情報や実ユーザ無し）: who, id, groups, sudo, systemctl
 - **使えるディレクトリ**
 「え？dfいけんの！？」と思ってびっくりして試してみたら本当に出来るんですよね…
 「`df -h`を実行して」と頼んだらこれを実行して返してきました
@@ -104,17 +100,13 @@ pythonの`subprocess`経由でlinuxコマンドを実行します
 - **セッションが終了すると消えます**
 これが一番大きいです
 まぁそれはそう…メイン機能は対話AIなんで…
-</br>
 - **cronの定時実行**
 定時実行も無理ですね、終わったら消えちゃうので
-</br>
 - **オンラインには出られない**
 上でも触れていますが実行環境自体はサンドボックス内の仮想環境なのでwebには出られません
-</br>
 - **他の言語での実行**
 Python tool経由で実行していて、linuxも`subprocess`を使っているので他の言語は未対応です
 でももしかしたら今後対応言語は増えるかもしれませんね
-</br>
 - **JST対応**
 後述するプロンプトの中で日本標準時をお願いしているんですが反映されないんですよね
 サーバがアメリカにあるから、というのが大きそうですが私の指示次第で解決できそうな気もします
@@ -130,7 +122,6 @@ Python tool経由で実行していて、linuxも`subprocess`を使っている�
 1. **新規会話開始**
 まず軽量なフロントUI（チャットの入力画面）を表示
 表ではユーザが入力をしているのでそこで時間を稼ぎます
-<br>
 2. **準備完了**
 ユーザから一回目の入力でコード関連の話をされた場合、pythonを使うかも？と判断仮想環境をトリガ
 ディレクトリは特定のもののみ、webアクセスなし、パッケージ固定でpipは不可なのは短時間で用意するためです
