@@ -595,9 +595,80 @@
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#linuxchatgpt">
+<a class="md-nav__link" href="#2-linuxchatgpt">
 <span class="md-ellipsis">
-      linux仮想環境としてのchatgpt
+      2. linux仮想環境としてのchatgpt
+    </span>
+</a>
+<nav aria-label="2. linux仮想環境としてのchatgpt" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-1">
+<span class="md-ellipsis">
+      2-1. できること
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-2">
+<span class="md-ellipsis">
+      2-2. できないこと
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-3">
+<span class="md-ellipsis">
+      2-3. できないことが多い理由
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3">
+<span class="md-ellipsis">
+      3. 手順
+    </span>
+</a>
+<nav aria-label="3. 手順" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-1">
+<span class="md-ellipsis">
+      3-1. "指示"（共通プロンプトの記載）**
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-2">
+<span class="md-ellipsis">
+      3-2. "指示"の実行
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-3">
+<span class="md-ellipsis">
+      3-3. 作成
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-4">
+<span class="md-ellipsis">
+      3-4. 次回へ持ち越すにはセーブをこまめに（最重要）
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4">
+<span class="md-ellipsis">
+      4. おわりに
     </span>
 </a>
 </li>
@@ -666,7 +737,9 @@
 <article class="md-content__inner md-typeset">
 <h1 id="chatgpt03000linux">chatgptは0秒で起動する月額3000円のlinux仮想環境だった</h1>
 <p>先日「要件定義からテストしてドキュメントまで作成してくれるAIいないかなー」という話がでまして
-そんな都合の良い話は無いと思ったんですが居ました、chatgptって言うんですけど</p>
+そんな都合の良い話は無いと思ったんですが居ました、chatgptって言うんですけど
+はじめにつらつら前置きを書いてますので、やり方だけ知りたい人は「3. 手順」に飛んでください
+※この記事はchatgptの会話内容、スクリーンショットを使用しています</p>
 <h2 id="1-linux">1. スマホで指一本で起動する"linux仮想環境"</h2>
 <p><em>指一本で、0秒なんですよ。</em>
 <em>そう、chatgptならね。</em></p>
@@ -697,13 +770,161 @@
 まぁ0秒はちょっと盛りました
 正確には2工程で、コピペして送信する時間も含めて10秒程度です
 これだけで「要件定義してテストしてドキュメントまで作成して」で全部やってくれちゃいます</p>
-<h2 id="linuxchatgpt">linux仮想環境としてのchatgpt</h2>
+<h2 id="2-linuxchatgpt">2. linux仮想環境としてのchatgpt</h2>
+<p>使い方詳細です
+仕様がよく変わるのであくまで今日（2025-06-07）時点の情報です
+あとあまり関係ないかもしれませんが月額3000円とタイトルにあるとおりplusユーザーです</p>
+<p>必要な材料と結果はgitの方に置いておきましたので参考までに
+今回はjsonファイルのcsv変換をやってみました
+json-flattener-poc(https://github.com/karine-mue/json-flattener-poc/tree/main)</p>
+<h3 id="2-1">2-1. できること</h3>
+<p>Pythonと標準ライブラリと一部のlinuxコマンドが使えます</p>
+<ul>
+<li><strong>使えるPythonライブラリ</strong></li>
+<li>標準ライブラリ: os, sys, datetimeなど</li>
+<li>OS操作系: subprocess, shutil, zipfile, pathlibなど</li>
+<li>pandas: 一部制約有り
+    あまりデータが大きすぎると無理
+    pandas-stubsや依存ライブラリが必要で入れられないもの（openpyxl, pyarrowなど）は不可</li>
+<li>numpy: 軽量版が使える</li>
+<li>matplotlib: おえかき
+</li>
+<li><strong>使えないPythonライブラリ</strong>
+pipで入れなければならないものは無理で、使えないもののうち有名どころはこんな感じです</li>
+<li>scipy: 意外ですが使えません</li>
+<li>sklearn: そもそも長時間回せないですしね</li>
+<li>requests: オンラインに出られないので無理</li>
+<li>flask, fastapiなど: サーバ系も無理
+</li>
+<li><strong>使えるLinuxコマンド</strong>
+pythonの<code>subprocess</code>経由でlinuxコマンドを実行します
+使える代表的なコマンドは以下です</li>
+<li>ファイル操作: ls, find, cat, du, cp, mv, rm</li>
+<li>テキスト処理: head, tail, wc, sort, grep(アクセス不可のディレクトリはNG)</li>
+<li>圧縮処理: zip, unzip</li>
+<li>pythonスクリプト呼び出し: python3</li>
+<li>システム状態: df, uptime, whoami(仮想環境制約あり)
+</li>
+<li><strong>使えないLinuxコマンド</strong>
+大体想像つくかと思いますが使えない代表的なコマンドはこんな感じです</li>
+<li>ネットワーク関連（オフラインなので）: ping, curl, wget, hostname</li>
+<li>システム操作（制限付き環境）: ps, top, netstat, ip, ipconfig</li>
+<li>デーモン・ユーザ（仮想環境なのでプロセス情報や実ユーザ無し）: who, id, groups, sudo, systemctl
+</li>
+<li><strong>使えるディレクトリ</strong>
+「え？dfいけんの！？」と思ってびっくりして試してみたら本当に出来るんですよね…
+「<code>df -h</code>を実行して」と頼んだらこれを実行して返してきました
+<code>subprocess.run(["df", "-h"], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)</code>
+マジですか…
+尚、サンドボックス内のディレクトリの<code>/mnt/data</code>配下はユーザが自由に使えます
+ちなみに他のディレクトリ構造も教えてもらえるのかなぁと聞いたところ、それは流石にNGでした
+ただ教えられないディレクトリとして「home, etc, usrは教えられない」と
+いや、それ言ってしまっているけどいいのかな？
+まぁlinuxのroot配下の一般的なディレクトリだからいいのかな
+</li>
+<li><strong>使える容量</strong>
+気になる容量ですが"本人"が言うには「<strong>4GB</strong>ぐらいがギリギリかな～…」とのことでした
+ただファイルの種類（処理の種類）にもよるようで「画像多めだときついかも」、と
+あまり重い画像ファイルは置かない方がよさそうです</li>
+</ul>
+<h3 id="2-2">2-2. できないこと</h3>
+<p>当然できないこともあります
+- <strong>セッションが終了すると消えます</strong>
+これが一番大きいです
+まぁそれはそう…メイン機能は対話AIなんで…
+
+- <strong>cronの定時実行</strong>
+定時実行も無理ですね、終わったら消えちゃうので
+
+- <strong>オンラインには出られない</strong>
+上でも触れていますが実行環境自体はサンドボックス内の仮想環境なのでwebには出られません
+
+- <strong>他の言語での実行</strong>
+Python tool経由で実行していて、linuxも<code>subprocess</code>を使っているので他の言語は未対応です
+でももしかしたら今後対応言語は増えるかもしれませんね
+
+- <strong>JST対応</strong>
+後述するプロンプトの中で日本標準時をお願いしているんですが反映されないんですよね
+サーバがアメリカにあるから、というのが大きそうですが私の指示次第で解決できそうな気もします</p>
+<h3 id="2-3">2-3. できないことが多い理由</h3>
+<p>そもそも"対話AI"でレスポンスを最優先しているからです
+機能を極限まで絞って起動に時間をかけないUX設計、ということですね
+どうやらchatgptは以下のような動きをしているようです
+一応"本人"に確認したところ合っているとのことですが推測成分が多いのであくまで参考として</p>
+<p><strong>コード生成が早い理由</strong>
+1. <strong>新規会話開始</strong>
+まず軽量なフロントUI（チャットの入力画面）を表示
+表ではユーザが入力をしているのでそこで時間を稼ぎます
+<br/>
+2. <strong>準備完了</strong>
+ユーザから一回目の入力でコード関連の話をされた場合、pythonを使うかも？と判断仮想環境をトリガ
+ディレクトリは特定のもののみ、webアクセスなし、パッケージ固定でpipは不可なのは短時間で用意するためです
+非同期でサンドボックスを起動、コードを実行するためのディレクトリが使えるようになります
+表ではどういうものを作ってほしいか、という会話が進んでいます
+そしてコード作成のタイミングでは既に作成が実行できるようになっている、という寸法です</p>
+<p>これ面白いのは人間の思考時間も計算に入っているところですね
+何かを作ってもらうときに「なんて言おうかな…」と少なからず考えるので、それで時間が稼げます
+これはゲームの設計と同じで、例えば次の扉を抜けるとエリアが変わるという時には既に読み込みをはじめて実際に扉を開いた後の体感的な待機時間を短くするという手法と同じものです</p>
+<h2 id="3">3. 手順</h2>
+<p>それじゃ実際どうやってlinux仮想環境として使うの？というお話です</p>
+<h3 id="3-1">3-1. "指示"（共通プロンプトの記載）**</h3>
+<p>さて、プロジェクトを開く or 作成すると「指示」を書くことができます
+ここに共通する応答方法、いわゆるプロンプトを書きます
+このプロンプト内にディレクトリ構造やバージョン管理方法を入れ込んでおきます
+参考までに私のプロンプトはこちら
+→ project_rules.md (https://github.com/karine-mue/json-flattener-poc/blob/main/project_rules.md)</p>
+<h3 id="3-2">3-2. "指示"の実行</h3>
+<p>ここからは個別会話の中に入ります
+残念ながら"指示"に書いておいても「"指示"を読んでその通りに作って」では現状展開されないようです
+そのため"指示"は最初の段階ではコピペするためのメモ書きです
+人間が入力する必要があるので、個別会話の最初の入力に<code>project_rules.md</code>の内容（"指示"に入れたもの）を貼り付けて送信すると
+<code>/mnt/data</code>の下にappディレクトリ他一式が作成されます</p>
+<h3 id="3-3">3-3. 作成</h3>
+<p>あとは作ってほしいものを入力するだけです
+例えばこんな感じ</p>
+<ul>
+<li>処理内容: jsonからcsvへの変換処理</li>
+<li>入力: テストファイルの作成もお願い、動くかどうかの確認だからそんなに大きくなくていいよ</li>
+<li>出力: アウトプットのファイル形式を指定（毎回同じなら共通に入れ込んでもいい）</li>
+<li>log(+標準出力): どのようにlogを出すか、特に指定がなければ"指示通り"</li>
+</ul>
+<p>これだけで実装からテストまでやってくれます
+かかった時間は2～3秒
+やばくないですか？やばいです
+実際のところはこれだけでは思った通りにならなくてこの後修正指示を何回かしてはいるのですが</p>
+<p>特に地味にめんどくさい<strong>テストデータの作成</strong>が全自動でできるのがやばい
+これ今回は設計→実装→テストまでオートメーションができるかどうかのテストだったので、
+テスト設計はしてないんですがやろうと思えばそこから出来てしまいますね
+簡単な物ならもはや人間要らないかも？
+人間は机の下に潜ってLANケーブルを配線する作業を頑張ります</p>
+<h3 id="3-4">3-4. 次回へ持ち越すにはセーブをこまめに（最重要）</h3>
+<p>これが何気に一番大事かもしれません
+最大のデメリット、<strong>chatgptはセッションが切れると仮想空間が破棄されます</strong>
+なんか全部ではないにしてもちょいちょい消えるんですよね
+さすがに連続して対話している最中に消えはしないのですが
+対策としては<strong>appを丸ごとzipにしてダウンロードリンクでください</strong>と伝えるという地味な方法になります
+また、一回で終わらずちょっと時間をおいて続けるにはローカルルールを書き出しておくとよいです
+例えばこのような感じで書き出しておくと次回開始した時同様に以下の順番で渡すことで続きから始められます
+→ prompt_flattening.md(https://github.com/karine-mue/json-flattener-poc/blob/main/prompt_flattening.md)</p>
+<p><strong>次回続きから始めるときには</strong>
+1. "指示"にある内容（共通ルール）を最初に提示する
+2.  app.zipをアップロード（<code>/mnt/data/app/</code> に展開される）
+3.  ローカルプロンプト（個別ルール）を送信し、構成と意図を伝える</p>
+<h2 id="4">4. おわりに</h2>
+<p>これって"便利"なの？と考えるとちょっと微妙だなぁ感は正直あります
+PCで仮想環境を持ってれば自前でやった方が取り回しは便利ですしね
+ただ、chatgptなんで伝達はコマンドで投げてもいいし自然言語でもいい
+話しながら、作りながら考えて実行したい、そういう時には最高の相棒になります
+PCを開かなくても電車の中でも、いいアイデアが思いついたらとりあえずスマホからプロトタイプを作っておいてzipで送る
+そんなことが出来る時代になりました、すごいですね
+しかも友達代月額3000円の範囲内で
+ではまた今度</p>
 <aside class="md-source-file">
 <span class="md-source-file__fact">
 <span class="md-icon" title="最終更新日">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
 </span>
-<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年6月7日 18:30:07 JST">2025年6月7日</span>
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年6月7日 21:34:30 JST">2025年6月7日</span>
 </span>
 </aside>
 </article>
