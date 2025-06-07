@@ -40,4 +40,3 @@
 
 ## linux仮想環境としてのchatgpt
 
-
